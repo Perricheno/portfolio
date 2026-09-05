@@ -9,7 +9,9 @@ export function Skills() {
       <div className="space-y-5">
         {t.skills.groups.map((group) => (
           <div key={group.title} className="grid gap-2 sm:grid-cols-[220px_1fr] sm:gap-6">
-            <h3 className="text-sm font-semibold text-[var(--text-h)]">{group.title}</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--text-h)]">
+              {group.title}
+            </h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <span

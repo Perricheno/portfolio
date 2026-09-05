@@ -14,7 +14,7 @@ export function Experience() {
               <h3 className="font-medium text-[var(--text-h)]">
                 {item.role} · {item.company}
               </h3>
-              <p className="mt-1 text-[var(--text)]">{item.description}</p>
+              <p className="mt-1 font-light leading-relaxed text-[var(--text)]">{item.description}</p>
             </div>
           </li>
         ))}

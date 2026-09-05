@@ -5,7 +5,9 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--border)] py-8">
-      <div className="mx-auto max-w-4xl px-6 text-sm text-[var(--text)]">{t.footer.text}</div>
+      <div className="mx-auto max-w-4xl px-6 text-[11px] font-bold uppercase tracking-widest text-[var(--text)] opacity-60">
+        {t.footer.text}
+      </div>
     </footer>
   )
 }

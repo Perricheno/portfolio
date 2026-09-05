@@ -50,7 +50,7 @@ export interface Content {
     contact: string
   }
   hero: { greeting: string; name: string; role: string; tagline: string; cta: string; resume: string }
-  about: { title: string; index: string; paragraphs: string[] }
+  about: { title: string; index: string }
   experience: { title: string; index: string; items: ExperienceItem[] }
   education: { title: string; index: string; items: EducationItem[] }
   certificates: {
@@ -93,10 +93,6 @@ export const content: Record<Locale, Content> = {
     about: {
       title: 'Обо мне',
       index: '01',
-      paragraphs: [
-        'Здесь короткий рассказ о вашем профессиональном пути: кто вы, чем занимаетесь и что вас мотивирует.',
-        'Второй абзац — про подход к работе, ценности или то, что отличает вас от других специалистов.',
-      ],
     },
     experience: {
       title: 'Опыт работы',
@@ -223,10 +219,6 @@ export const content: Record<Locale, Content> = {
     about: {
       title: 'About me',
       index: '01',
-      paragraphs: [
-        'A short story about your professional path: who you are, what you do, and what drives you.',
-        'A second paragraph about your approach to work, values, or what sets you apart.',
-      ],
     },
     experience: {
       title: 'Experience',

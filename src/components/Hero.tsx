@@ -18,7 +18,9 @@ export function Hero() {
           {t.hero.name}
         </h1>
         <p className="mt-3 text-xl font-medium text-[var(--text)] md:text-2xl">{t.hero.role}</p>
-        <p className="mt-4 max-w-xl text-[var(--text)]">{t.hero.tagline}</p>
+        <p className="mt-4 max-w-xl font-light leading-relaxed text-[var(--text)]">
+          {t.hero.tagline}
+        </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#contact"

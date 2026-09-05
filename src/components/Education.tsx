@@ -14,7 +14,11 @@ export function Education() {
               <h3 className="font-medium text-[var(--text-h)]">
                 {item.degree} · {item.institution}
               </h3>
-              {item.description && <p className="mt-1 text-[var(--text)]">{item.description}</p>}
+              {item.description && (
+                <p className="mt-1 font-light leading-relaxed text-[var(--text)]">
+                  {item.description}
+                </p>
+              )}
             </div>
           </li>
         ))}

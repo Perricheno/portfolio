@@ -7,7 +7,7 @@ export function Contact() {
 
   return (
     <Section id="contact" index={t.contact.index} title={t.contact.title}>
-      <p className="max-w-lg text-[var(--text)]">{t.contact.text}</p>
+      <p className="max-w-lg font-light leading-relaxed text-[var(--text)]">{t.contact.text}</p>
       <div className="mt-8 flex flex-wrap gap-3">
         {socials.map(({ label, href, icon: Icon }) => (
           <a

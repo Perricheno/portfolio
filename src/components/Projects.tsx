@@ -29,7 +29,7 @@ export function Projects() {
               {project.subtitle && (
                 <p className="text-sm text-[var(--text)]">{project.subtitle}</p>
               )}
-              <ul className="mt-2 list-disc space-y-1.5 pl-4 text-[var(--text)]">
+              <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)]">
                 {project.bullets.map((bullet) => (
                   <li key={bullet}>{bullet}</li>
                 ))}
