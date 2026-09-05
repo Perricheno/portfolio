@@ -1,14 +1,10 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import aboutEn from '../content/about.en.md?raw'
-import aboutRu from '../content/about.ru.md?raw'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 
-const ABOUT_MD = { ru: aboutRu, en: aboutEn }
-
 export function About() {
-  const { t, locale } = useLanguage()
+  const { t } = useLanguage()
 
   return (
     <Section id="about" index={t.about.index} title={t.about.title}>
@@ -53,7 +49,7 @@ export function About() {
             ),
           }}
         >
-          {ABOUT_MD[locale]}
+          {t.about.markdown}
         </ReactMarkdown>
       </div>
     </Section>

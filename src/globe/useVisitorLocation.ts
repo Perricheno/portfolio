@@ -26,11 +26,12 @@ async function detectVisitor(): Promise<VisitorLocation | null> {
   return null
 }
 
-export function useVisitorLocation() {
+export function useVisitorLocation(enabled: boolean) {
   const [visitor, setVisitor] = useState<VisitorLocation | null>(null)
   const [checked, setChecked] = useState(false)
 
   useEffect(() => {
+    if (!enabled) return
     let cancelled = false
     detectVisitor().then((loc) => {
       if (!cancelled) {
@@ -41,7 +42,7 @@ export function useVisitorLocation() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [enabled])
 
   return { visitor, checked }
 }

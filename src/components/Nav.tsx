@@ -1,4 +1,4 @@
-import { Globe as GlobeIcon, Moon, Sun } from 'lucide-react'
+import { Globe as GlobeIcon, GlobeOff, Moon, Sun } from 'lucide-react'
 import { useGlobeStyle } from '../globe/GlobeStyleContext'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useTheme } from '../theme/ThemeContext'
@@ -6,7 +6,7 @@ import { useTheme } from '../theme/ThemeContext'
 export function Nav() {
   const { t, locale, toggleLocale } = useLanguage()
   const { theme, toggleTheme } = useTheme()
-  const { cycleStyle } = useGlobeStyle()
+  const { style, cycleStyle } = useGlobeStyle()
 
   const links: [string, string][] = [
     ['#about', t.nav.about],
@@ -39,8 +39,9 @@ export function Nav() {
             onClick={cycleStyle}
             className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
             aria-label="Change globe style"
+            title={style === 'off' ? 'Globe: off' : `Globe: ${style}`}
           >
-            <GlobeIcon size={14} />
+            {style === 'off' ? <GlobeOff size={14} /> : <GlobeIcon size={14} />}
           </button>
           <button
             type="button"

@@ -1,14 +1,19 @@
 import { Globe } from './Globe'
+import { useGlobeStyle } from '../globe/GlobeStyleContext'
 import { resumeLinks } from '../data/resumeLinks.generated'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export function Hero() {
   const { t, locale } = useLanguage()
+  const { style } = useGlobeStyle()
+  const showGlobe = style !== 'off'
 
   return (
     <section
       id="top"
-      className="mx-auto grid max-w-4xl grid-cols-1 items-center gap-8 px-6 pb-10 pt-12 md:grid-cols-[1fr_auto] md:pb-14 md:pt-16"
+      className={`mx-auto grid max-w-4xl grid-cols-1 items-center gap-8 px-6 pb-10 pt-12 md:pb-14 md:pt-16 ${
+        showGlobe ? 'md:grid-cols-[1fr_auto]' : ''
+      }`}
     >
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text)]">
@@ -38,9 +43,11 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <div className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end">
-        <Globe />
-      </div>
+      {showGlobe && (
+        <div className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end">
+          <Globe />
+        </div>
+      )}
     </section>
   )
 }

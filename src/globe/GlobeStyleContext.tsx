@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
-export type GlobeStyle = 'atlas' | 'dots' | 'ascii'
+export type GlobeStyle = 'off' | 'atlas' | 'dots' | 'ascii'
 
-const ORDER: GlobeStyle[] = ['atlas', 'dots', 'ascii']
+const ORDER: GlobeStyle[] = ['off', 'atlas', 'dots', 'ascii']
 
 // Change this to set which globe style every new visitor sees by default.
 // Visitors who click the globe-style button keep their own choice (saved
 // in their browser) regardless of this value.
-const DEFAULT_STYLE: GlobeStyle = 'atlas'
+const DEFAULT_STYLE: GlobeStyle = 'off'
 
 interface GlobeStyleContextValue {
   style: GlobeStyle
@@ -21,7 +21,7 @@ const STORAGE_KEY = 'cv-globe-style'
 function getInitialStyle(): GlobeStyle {
   if (typeof window === 'undefined') return DEFAULT_STYLE
   const stored = window.localStorage.getItem(STORAGE_KEY)
-  if (stored === 'atlas' || stored === 'dots' || stored === 'ascii') return stored
+  if (stored === 'off' || stored === 'atlas' || stored === 'dots' || stored === 'ascii') return stored
   return DEFAULT_STYLE
 }
 

@@ -1,3 +1,7 @@
+import siteEn from '../content/site.en.md?raw'
+import siteRu from '../content/site.ru.md?raw'
+import { parseSite } from './parseSite'
+
 export type Locale = 'ru' | 'en'
 
 export interface ExperienceItem {
@@ -50,7 +54,7 @@ export interface Content {
     contact: string
   }
   hero: { greeting: string; name: string; role: string; tagline: string; cta: string; resume: string }
-  about: { title: string; index: string }
+  about: { title: string; index: string; markdown: string }
   experience: { title: string; index: string; items: ExperienceItem[] }
   education: { title: string; index: string; items: EducationItem[] }
   certificates: {
@@ -66,258 +70,76 @@ export interface Content {
   footer: { text: string }
 }
 
-export const content: Record<Locale, Content> = {
+// Small UI strings that aren't really "your résumé content" — button labels
+// and the like. Edit the actual text (name, experience, skills, projects...)
+// in src/content/site.ru.md and site.en.md instead — see TEMPLATE.md there.
+const ui = {
   ru: {
-    meta: {
-      title: 'Имя Фамилия — Портфолио',
-      description: 'Личный сайт-резюме — обо мне, опыт, образование и проекты.',
-    },
-    nav: {
-      about: 'Обо мне',
-      experience: 'Опыт',
-      education: 'Образование',
-      certificates: 'Сертификаты',
-      skills: 'Навыки',
-      projects: 'Проекты',
-      contact: 'Контакты',
-    },
-    hero: {
-      greeting: 'Привет, я',
-      name: 'Имя Фамилия',
-      role: 'Должность / специализация',
-      tagline:
-        'Коротко о том, чем вы занимаетесь и в чём ваша сильная сторона — одно-два предложения.',
-      cta: 'Связаться',
-      resume: 'Скачать резюме',
-    },
-    about: {
-      title: 'Обо мне',
-      index: '01',
-    },
-    experience: {
-      title: 'Опыт работы',
-      index: '02',
-      items: [
-        {
-          period: '2023 — настоящее время',
-          role: 'Должность',
-          company: 'Компания XYZ',
-          description: 'Краткое описание задач и достижений на этой позиции.',
-        },
-        {
-          period: '2021 — 2023',
-          role: 'Должность',
-          company: 'Компания',
-          description: 'Краткое описание задач и достижений на этой позиции.',
-        },
-        {
-          period: '2019 — 2021',
-          role: 'Должность',
-          company: 'Компания',
-          description: 'Краткое описание задач и достижений на этой позиции.',
-        },
-      ],
-    },
-    education: {
-      title: 'Образование',
-      index: '03',
-      items: [
-        {
-          period: '2024 — 2027 (ожидается)',
-          degree: 'Бакалавр',
-          institution: 'Astana IT University',
-        },
-      ],
-    },
-    certificates: {
-      title: 'Сертификаты',
-      index: '04',
-      items: [
-        { title: 'Название сертификата', issuer: 'Организация', year: '2024' },
-        { title: 'Название сертификата', issuer: 'Организация', year: '2023' },
-      ],
-      viewOriginal: 'Открыть оригинал',
-      noImage: 'Скан сертификата ещё не добавлен',
-    },
-    skills: {
-      title: 'Технические навыки',
-      index: '05',
-      groups: [
-        { title: 'Языки программирования', items: ['Python', 'R'] },
-        {
-          title: 'Базы данных & Аналитика',
-          items: ['PostgreSQL', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau'],
-        },
-        {
-          title: 'Backend & Архитектура',
-          items: ['Микросервисы', 'Multi-Agent Systems', 'RAG Architectures', 'NLP (spaCy)'],
-        },
-        {
-          title: 'DevOps & Cloud',
-          items: [
-            'Linux (администрирование серверов Ubuntu/Debian)',
-            'Google Cloud Platform (Compute Engine, VPC, VDS)',
-            'Docker',
-            'CI/CD автоматизация (GitHub Actions)',
-            'Cloudflare',
-          ],
-        },
-        {
-          title: 'Инструменты & Геоданные',
-          items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
-        },
-        {
-          title: 'Языки',
-          items: ['Русский (C1)', 'Казахский (родной)', 'Английский (B2 — технический)'],
-        },
-      ],
-    },
-    projects: {
-      title: 'Проекты & Научная деятельность',
-      index: '06',
-      items: [
-        {
-          period: 'Янв. 2026 — Февр. 2026',
-          title: 'Исследование E-commerce логистики',
-          subtitle: 'Соавторство с Dr. Kamal Imran Mohd Sharif',
-          bullets: [
-            'В соавторстве с профессором Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia) провёл количественное исследование аналитики последней мили.',
-            'Обработал массив из 10 000 000+ транзакций на R с применением бинарной логистической регрессии для оценки компромисса между скоростью и надёжностью доставки.',
-          ],
-        },
-      ],
-    },
-    contact: {
-      title: 'Связаться',
-      index: '07',
-      text: 'Открыт(а) для новых проектов и предложений. Напишите — отвечу в течение дня.',
-    },
-    footer: { text: '© 2026 Имя Фамилия. Все права защищены.' },
+    greeting: 'Привет, я',
+    cta: 'Связаться',
+    resume: 'Скачать резюме',
+    viewOriginal: 'Открыть оригинал',
+    noImage: 'Скан сертификата ещё не добавлен',
+    metaSuffix: 'Портфолио',
+    copyright: (name: string) => `© 2026 ${name}. Все права защищены.`,
   },
   en: {
+    greeting: "Hi, I'm",
+    cta: 'Get in touch',
+    resume: 'Download résumé',
+    viewOriginal: 'View original',
+    noImage: "Certificate scan hasn't been added yet",
+    metaSuffix: 'Portfolio',
+    copyright: (name: string) => `© 2026 ${name}. All rights reserved.`,
+  },
+} as const
+
+const INDEXES = ['01', '02', '03', '04', '05', '06', '07'] as const
+
+function buildContent(locale: Locale): Content {
+  const site = parseSite(locale === 'ru' ? siteRu : siteEn)
+  const u = ui[locale]
+
+  return {
     meta: {
-      title: 'First Last — Portfolio',
-      description: 'Personal resume site — about, experience, education and projects.',
+      title: `${site.heroName} — ${u.metaSuffix}`,
+      description: site.heroTagline,
     },
     nav: {
-      about: 'About',
-      experience: 'Experience',
-      education: 'Education',
-      certificates: 'Certificates',
-      skills: 'Skills',
-      projects: 'Projects',
-      contact: 'Contact',
+      about: site.aboutNav,
+      experience: site.experienceNav,
+      education: site.educationNav,
+      certificates: site.certificatesNav,
+      skills: site.skillsNav,
+      projects: site.projectsNav,
+      contact: site.contactNav,
     },
     hero: {
-      greeting: "Hi, I'm",
-      name: 'First Last',
-      role: 'Role / specialization',
-      tagline: 'A short line about what you do and what you are great at — one or two sentences.',
-      cta: 'Get in touch',
-      resume: 'Download résumé',
+      greeting: u.greeting,
+      name: site.heroName,
+      role: site.heroRole,
+      tagline: site.heroTagline,
+      cta: u.cta,
+      resume: u.resume,
     },
-    about: {
-      title: 'About me',
-      index: '01',
-    },
-    experience: {
-      title: 'Experience',
-      index: '02',
-      items: [
-        {
-          period: '2023 — present',
-          role: 'Role',
-          company: 'Company XYZ',
-          description: 'Brief description of responsibilities and achievements in this role.',
-        },
-        {
-          period: '2021 — 2023',
-          role: 'Role',
-          company: 'Company',
-          description: 'Brief description of responsibilities and achievements in this role.',
-        },
-        {
-          period: '2019 — 2021',
-          role: 'Role',
-          company: 'Company',
-          description: 'Brief description of responsibilities and achievements in this role.',
-        },
-      ],
-    },
-    education: {
-      title: 'Education',
-      index: '03',
-      items: [
-        {
-          period: '2024 — 2027 (expected)',
-          degree: "Bachelor's Degree",
-          institution: 'Astana IT University',
-        },
-      ],
-    },
+    about: { title: site.aboutTitle, index: INDEXES[0], markdown: site.aboutMarkdown },
+    experience: { title: site.experienceTitle, index: INDEXES[1], items: site.experienceItems },
+    education: { title: site.educationTitle, index: INDEXES[2], items: site.educationItems },
     certificates: {
-      title: 'Certificates',
-      index: '04',
-      items: [
-        { title: 'Certificate name', issuer: 'Issuer', year: '2024' },
-        { title: 'Certificate name', issuer: 'Issuer', year: '2023' },
-      ],
-      viewOriginal: 'View original',
-      noImage: "Certificate scan hasn't been added yet",
+      title: site.certificatesTitle,
+      index: INDEXES[3],
+      items: site.certificatesItems,
+      viewOriginal: u.viewOriginal,
+      noImage: u.noImage,
     },
-    skills: {
-      title: 'Technical Skills',
-      index: '05',
-      groups: [
-        { title: 'Programming Languages', items: ['Python', 'R'] },
-        {
-          title: 'Databases & Analytics',
-          items: ['PostgreSQL', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau'],
-        },
-        {
-          title: 'Backend & Architecture',
-          items: ['Microservices', 'Multi-Agent Systems', 'RAG Architectures', 'NLP (spaCy)'],
-        },
-        {
-          title: 'DevOps & Cloud',
-          items: [
-            'Linux (Ubuntu/Debian server administration)',
-            'Google Cloud Platform (Compute Engine, VPC, VDS)',
-            'Docker',
-            'CI/CD automation (GitHub Actions)',
-            'Cloudflare',
-          ],
-        },
-        {
-          title: 'Tools & Geodata',
-          items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
-        },
-        {
-          title: 'Languages',
-          items: ['Russian (C1)', 'Kazakh (native)', 'English (B2 — technical)'],
-        },
-      ],
-    },
-    projects: {
-      title: 'Projects & Research',
-      index: '06',
-      items: [
-        {
-          period: 'Jan 2026 — Feb 2026',
-          title: 'E-commerce Logistics Research',
-          subtitle: 'Co-authored with Dr. Kamal Imran Mohd Sharif',
-          bullets: [
-            'Co-authored with Professor Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia), conducted a quantitative study on last-mile delivery analytics.',
-            'Processed a dataset of 10,000,000+ transactions in R using binary logistic regression to evaluate the trade-off between delivery speed and reliability.',
-          ],
-        },
-      ],
-    },
-    contact: {
-      title: 'Get in touch',
-      index: '07',
-      text: 'Open to new projects and opportunities. Reach out — I usually reply within a day.',
-    },
-    footer: { text: '© 2026 First Last. All rights reserved.' },
-  },
+    skills: { title: site.skillsTitle, index: INDEXES[4], groups: site.skillsGroups },
+    projects: { title: site.projectsTitle, index: INDEXES[5], items: site.projectsItems },
+    contact: { title: site.contactTitle, index: INDEXES[6], text: site.contactText },
+    footer: { text: u.copyright(site.heroName) },
+  }
+}
+
+export const content: Record<Locale, Content> = {
+  ru: buildContent('ru'),
+  en: buildContent('en'),
 }

@@ -12,7 +12,9 @@ const AsciiGlobe = lazy(() => import('../globe/AsciiGlobe').then((m) => ({ defau
 export function Globe() {
   const { locale } = useLanguage()
   const { style } = useGlobeStyle()
-  const { visitor, checked } = useVisitorLocation()
+  const { visitor, checked } = useVisitorLocation(style !== 'off')
+
+  if (style === 'off') return null
 
   const meLabel = locale === 'ru' ? 'Я' : 'Me'
   const youLabel = locale === 'ru' ? 'Вы' : 'You'
