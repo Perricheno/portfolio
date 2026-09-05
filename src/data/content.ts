@@ -18,6 +18,9 @@ export interface CertificateItem {
   title: string
   issuer: string
   year: string
+  /** Path to a scan/photo of the certificate, e.g. '/certificates/aws.jpg'. */
+  image?: string
+  /** Optional external verification URL. */
   link?: string
 }
 
@@ -50,7 +53,13 @@ export interface Content {
   about: { title: string; index: string; paragraphs: string[] }
   experience: { title: string; index: string; items: ExperienceItem[] }
   education: { title: string; index: string; items: EducationItem[] }
-  certificates: { title: string; index: string; items: CertificateItem[] }
+  certificates: {
+    title: string
+    index: string
+    items: CertificateItem[]
+    viewOriginal: string
+    noImage: string
+  }
   skills: { title: string; index: string; groups: SkillGroup[] }
   projects: { title: string; index: string; items: ProjectItem[] }
   contact: { title: string; index: string; text: string }
@@ -128,9 +137,11 @@ export const content: Record<Locale, Content> = {
       title: 'Сертификаты',
       index: '04',
       items: [
-        { title: 'Название сертификата', issuer: 'Организация', year: '2024', link: '#' },
-        { title: 'Название сертификата', issuer: 'Организация', year: '2023', link: '#' },
+        { title: 'Название сертификата', issuer: 'Организация', year: '2024' },
+        { title: 'Название сертификата', issuer: 'Организация', year: '2023' },
       ],
+      viewOriginal: 'Открыть оригинал',
+      noImage: 'Скан сертификата ещё не добавлен',
     },
     skills: {
       title: 'Технические навыки',
@@ -256,9 +267,11 @@ export const content: Record<Locale, Content> = {
       title: 'Certificates',
       index: '04',
       items: [
-        { title: 'Certificate name', issuer: 'Issuer', year: '2024', link: '#' },
-        { title: 'Certificate name', issuer: 'Issuer', year: '2023', link: '#' },
+        { title: 'Certificate name', issuer: 'Issuer', year: '2024' },
+        { title: 'Certificate name', issuer: 'Issuer', year: '2023' },
       ],
+      viewOriginal: 'View original',
+      noImage: "Certificate scan hasn't been added yet",
     },
     skills: {
       title: 'Technical Skills',
