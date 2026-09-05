@@ -1,13 +1,14 @@
 @import 'tailwindcss';
 
 :root {
+  --page-bg: #eeede8;
   --bg: #ffffff;
-  --text: #6b6375;
-  --text-h: #08060d;
-  --border: #e5e4e7;
-  --surface: #f7f6f3;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.08);
+  --surface: #f4f3ee;
+  --text: #6b6a66;
+  --text-h: #0a0a0a;
+  --border: #e2e0d9;
+  --accent: #0a0a0a;
+  --accent-bg: rgba(10, 10, 10, 0.06);
 
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
   --mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
@@ -17,13 +18,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0d0e12;
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --border: #24252c;
-    --surface: #16171d;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.12);
+    --page-bg: #08080a;
+    --bg: #131316;
+    --surface: #1b1b1f;
+    --text: #97969b;
+    --text-h: #f5f5f5;
+    --border: #29292e;
+    --accent: #f5f5f5;
+    --accent-bg: rgba(245, 245, 245, 0.08);
   }
 }
 
@@ -37,7 +39,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--page-bg);
   color: var(--text);
   font-family: var(--sans);
   font-size: 17px;

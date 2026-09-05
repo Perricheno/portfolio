@@ -19,8 +19,8 @@ export function Section({ id, index, title, children }: SectionProps) {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="mb-12 flex items-baseline gap-4"
         >
-          <span className="font-mono text-sm text-[var(--accent)]">{index}</span>
-          <h2 className="text-2xl font-medium tracking-tight text-[var(--text-h)] md:text-3xl">
+          <span className="font-mono text-xs font-semibold text-[var(--text)]">{index}</span>
+          <h2 className="text-2xl font-bold tracking-tight text-[var(--text-h)] md:text-3xl">
             {title}
           </h2>
         </motion.div>

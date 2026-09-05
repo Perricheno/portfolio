@@ -10,7 +10,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="font-mono text-sm text-[var(--accent)]"
+        className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text)]"
       >
         {t.hero.greeting}
       </motion.p>
@@ -18,7 +18,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.05 }}
-        className="mt-3 text-4xl font-medium tracking-tight text-[var(--text-h)] md:text-6xl"
+        className="mt-3 text-5xl font-bold leading-[1.05] tracking-tight text-[var(--text-h)] md:text-7xl"
       >
         {t.hero.name}
       </motion.h1>
@@ -26,7 +26,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-4 text-xl text-[var(--text)] md:text-2xl"
+        className="mt-4 text-xl font-medium text-[var(--text)] md:text-2xl"
       >
         {t.hero.role}
       </motion.p>
@@ -46,13 +46,13 @@ export function Hero() {
       >
         <a
           href="#contact"
-          className="rounded-full bg-[var(--text-h)] px-5 py-2.5 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-85"
+          className="rounded-full bg-[var(--text-h)] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--bg)] transition-opacity hover:opacity-80"
         >
           {t.hero.cta}
         </a>
         <a
           href="/resume.pdf"
-          className="rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-medium text-[var(--text-h)] transition-colors hover:border-[var(--accent)]"
+          className="rounded-full border border-[var(--border)] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--text-h)] transition-colors hover:border-[var(--text-h)]"
         >
           {t.hero.resume}
         </a>
