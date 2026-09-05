@@ -21,6 +21,9 @@ dist-ssr
 /rucvfile
 /engcvfile
 
+# Claude Code local session state
+/.claude
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

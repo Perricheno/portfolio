@@ -24,9 +24,12 @@ function buildTexture(visitor: VisitorLocation | null): HTMLCanvasElement {
   canvas.width = w
   canvas.height = h
   const ctx = canvas.getContext('2d')!
-  ctx.fillStyle = '#000'
+  // AsciiEffect maps bright pixels to sparse characters (space) and dark
+  // pixels to dense ones — so water must be bright (empty) and land dark
+  // (filled) to read as "water empty, land drawn".
+  ctx.fillStyle = '#fff'
   ctx.fillRect(0, 0, w, h)
-  ctx.fillStyle = '#ddd'
+  ctx.fillStyle = '#111'
 
   const drawRing = (ring: number[][]) => {
     ctx.beginPath()
@@ -49,7 +52,7 @@ function buildTexture(visitor: VisitorLocation | null): HTMLCanvasElement {
     }
   }
 
-  ctx.fillStyle = '#fff'
+  ctx.fillStyle = '#000'
   const [mx, my] = project(ME.lng, ME.lat, w, h)
   ctx.beginPath()
   ctx.arc(mx, my, 7, 0, Math.PI * 2)
@@ -71,7 +74,10 @@ export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
-    const size = container.offsetWidth || 300
+    // Render a touch smaller than the box: monospace character-grid sizing
+    // in AsciiEffect can round up by a few px, so this keeps it from
+    // clipping against the container edge.
+    const size = Math.floor((container.offsetWidth || 300) * 0.94)
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
@@ -93,7 +99,14 @@ export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
     effect.domElement.style.backgroundColor = 'transparent'
     effect.domElement.style.pointerEvents = 'none'
     effect.domElement.style.touchAction = 'pan-y'
+    effect.domElement.style.maxWidth = '100%'
+    effect.domElement.style.maxHeight = '100%'
     effect.domElement.style.overflow = 'hidden'
+    const table = effect.domElement.querySelector('table')
+    if (table) {
+      table.style.maxWidth = '100%'
+      table.style.maxHeight = '100%'
+    }
 
     container.replaceChildren(effect.domElement)
 
@@ -116,7 +129,7 @@ export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
   return (
     <div
       ref={containerRef}
-      className="aspect-square w-full overflow-hidden text-[8px] leading-none"
+      className="flex aspect-square w-full items-center justify-center overflow-hidden text-[8px] leading-none"
       style={{ touchAction: 'pan-y' }}
     />
   )
