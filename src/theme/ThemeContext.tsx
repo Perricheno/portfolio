@@ -24,6 +24,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     window.localStorage.setItem(STORAGE_KEY, theme)
+    // Keep the phone browser's own chrome (status bar / address bar) in
+    // sync with the theme instead of leaving it at its own default color.
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#141414' : '#ffffff')
   }, [theme])
 
   const value = useMemo<ThemeContextValue>(
