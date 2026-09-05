@@ -1,8 +1,11 @@
-import { Globe } from './Globe'
+import { lazy, Suspense } from 'react'
+import { resumeLinks } from '../data/resumeLinks.generated'
 import { useLanguage } from '../i18n/LanguageContext'
 
+const Globe = lazy(() => import('./Globe').then((m) => ({ default: m.Globe })))
+
 export function Hero() {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
 
   return (
     <section
@@ -26,15 +29,19 @@ export function Hero() {
             {t.hero.cta}
           </a>
           <a
-            href="/resume.pdf"
+            href={resumeLinks[locale]}
+            target="_blank"
+            rel="noreferrer"
             className="rounded-full border border-[var(--border)] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--text-h)] transition-colors hover:border-[var(--text-h)]"
           >
             {t.hero.resume}
           </a>
         </div>
       </div>
-      <div className="w-full max-w-[220px] justify-self-center md:w-[220px] md:justify-self-end">
-        <Globe />
+      <div className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end">
+        <Suspense fallback={<div className="aspect-square w-full rounded-full bg-[var(--surface)]" />}>
+          <Globe />
+        </Suspense>
       </div>
     </section>
   )

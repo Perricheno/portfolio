@@ -1,8 +1,16 @@
-import createGlobe from 'cobe'
+import createGlobe from 'globe.gl'
 import { useEffect, useRef, useState } from 'react'
+import { feature } from 'topojson-client'
+import type { GeometryCollection, Topology } from 'topojson-specification'
+import countries110m from 'world-atlas/countries-110m.json'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const ME = { lat: 51.1801, lng: 71.446, city: 'Астана' }
+
+const countryFeatures = feature(
+  countries110m as unknown as Topology,
+  (countries110m as unknown as Topology).objects.countries as GeometryCollection,
+).features
 
 interface VisitorLocation {
   lat: number
@@ -32,7 +40,7 @@ async function detectVisitor(): Promise<VisitorLocation | null> {
 
 export function Globe() {
   const { locale } = useLanguage()
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [visitor, setVisitor] = useState<VisitorLocation | null>(null)
   const [visitorChecked, setVisitorChecked] = useState(false)
 
@@ -50,52 +58,52 @@ export function Globe() {
   }, [])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const el = containerRef.current
+    if (!el) return
+    const size = el.offsetWidth
 
-    const width = canvas.offsetWidth || 220
-    let phi = 0
-    let animationFrame: number
+    const points = [{ ...ME, label: 'me' }, ...(visitor ? [{ ...visitor, label: 'you' }] : [])]
+    const arcs = visitor
+      ? [{ startLat: ME.lat, startLng: ME.lng, endLat: visitor.lat, endLng: visitor.lng }]
+      : []
 
-    const markers = [{ location: [ME.lat, ME.lng] as [number, number], size: 0.09 }]
-    const arcs: { from: [number, number]; to: [number, number] }[] = []
-    if (visitor) {
-      markers.push({ location: [visitor.lat, visitor.lng], size: 0.09 })
-      arcs.push({ from: [ME.lat, ME.lng], to: [visitor.lat, visitor.lng] })
-    }
+    const globe = new createGlobe(el)
+      .width(size)
+      .height(size)
+      .backgroundColor('rgba(0,0,0,0)')
+      .showAtmosphere(false)
+      .polygonsData(countryFeatures)
+      .polygonGeoJsonGeometry((d: object) => (d as (typeof countryFeatures)[number]).geometry as never)
+      .polygonCapColor(() => '#c9c7bf')
+      .polygonSideColor(() => 'rgba(0,0,0,0)')
+      .polygonStrokeColor(() => '#8f8d84')
+      .polygonAltitude(0.006)
+      .pointsData(points)
+      .pointLat((d: object) => (d as VisitorLocation).lat)
+      .pointLng((d: object) => (d as VisitorLocation).lng)
+      .pointColor(() => '#111111')
+      .pointAltitude(0.02)
+      .pointRadius(0.45)
+      .arcsData(arcs)
+      .arcColor(() => '#111111')
+      .arcAltitude(0.25)
+      .arcStroke(0.4)
+      .arcDashLength(0.5)
+      .arcDashGap(0.3)
+      .arcDashAnimateTime(3500)
 
-    const globe = createGlobe(canvas, {
-      devicePixelRatio: 2,
-      width: width * 2,
-      height: width * 2,
-      phi: 0,
-      theta: 0.3,
-      dark: 0,
-      diffuse: 1.2,
-      scale: 1,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.82, 0.81, 0.78],
-      markerColor: [0.05, 0.05, 0.05],
-      glowColor: [0.94, 0.93, 0.9],
-      offset: [0, 0],
-      markers,
-      arcs,
-      arcColor: [0.05, 0.05, 0.05],
-      arcWidth: 0.4,
-      arcHeight: 0.35,
-    })
+    const material = globe.globeMaterial() as unknown as { color: { set: (hex: string) => void } }
+    material.color.set('#f4f3ee')
 
-    const animate = () => {
-      phi += 0.0035
-      globe.update({ phi })
-      animationFrame = requestAnimationFrame(animate)
-    }
-    animationFrame = requestAnimationFrame(animate)
+    globe.pointOfView({ lat: 45, lng: 55, altitude: 2 }, 0)
+
+    const controls = globe.controls()
+    controls.autoRotate = true
+    controls.autoRotateSpeed = 0.6
+    controls.enableZoom = false
 
     return () => {
-      cancelAnimationFrame(animationFrame)
-      globe.destroy()
+      el.replaceChildren()
     }
   }, [visitor])
 
@@ -104,12 +112,7 @@ export function Globe() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="aspect-square w-full">
-        <canvas
-          ref={canvasRef}
-          style={{ width: '100%', height: '100%', contain: 'layout paint size' }}
-        />
-      </div>
+      <div ref={containerRef} className="aspect-square w-full" />
       <div className="mt-2 flex flex-col items-center gap-1 text-xs text-[var(--text)]">
         <span className="flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-h)]" />

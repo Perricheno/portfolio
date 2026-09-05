@@ -22,9 +22,11 @@ export interface CertificateItem {
 }
 
 export interface ProjectItem {
+  period: string
   title: string
-  description: string
-  tags: string[]
+  subtitle?: string
+  bullets: string[]
+  tags?: string[]
   link?: string
 }
 
@@ -116,10 +118,9 @@ export const content: Record<Locale, Content> = {
       index: '03',
       items: [
         {
-          period: '2019 — 2023',
-          degree: 'Степень / направление',
-          institution: 'Название университета',
-          description: 'Краткое уточнение: специализация, диплом с отличием и т.п.',
+          period: '2024 — 2027 (ожидается)',
+          degree: 'Бакалавр',
+          institution: 'Astana IT University',
         },
       ],
     },
@@ -158,6 +159,10 @@ export const content: Record<Locale, Content> = {
           title: 'Инструменты & Геоданные',
           items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
         },
+        {
+          title: 'Языки',
+          items: ['Русский (C1)', 'Казахский (родной)', 'Английский (B2 — технический)'],
+        },
       ],
     },
     projects: {
@@ -165,22 +170,13 @@ export const content: Record<Locale, Content> = {
       index: '06',
       items: [
         {
-          title: 'Название проекта',
-          description: 'Краткое описание проекта: что это, какую задачу решает.',
-          tags: ['React', 'TypeScript'],
-          link: '#',
-        },
-        {
-          title: 'Название проекта',
-          description: 'Краткое описание проекта: что это, какую задачу решает.',
-          tags: ['Node.js', 'PostgreSQL'],
-          link: '#',
-        },
-        {
-          title: 'Название проекта',
-          description: 'Краткое описание проекта: что это, какую задачу решает.',
-          tags: ['Next.js', 'Tailwind'],
-          link: '#',
+          period: 'Янв. 2026 — Февр. 2026',
+          title: 'Исследование E-commerce логистики',
+          subtitle: 'Соавторство с Dr. Kamal Imran Mohd Sharif',
+          bullets: [
+            'В соавторстве с профессором Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia) провёл количественное исследование аналитики последней мили.',
+            'Обработал массив из 10 000 000+ транзакций на R с применением бинарной логистической регрессии для оценки компромисса между скоростью и надёжностью доставки.',
+          ],
         },
       ],
     },
@@ -250,10 +246,9 @@ export const content: Record<Locale, Content> = {
       index: '03',
       items: [
         {
-          period: '2019 — 2023',
-          degree: 'Degree / field of study',
-          institution: 'University name',
-          description: 'Short note: specialization, honors, etc.',
+          period: '2024 — 2027 (expected)',
+          degree: "Bachelor's Degree",
+          institution: 'Astana IT University',
         },
       ],
     },
@@ -292,6 +287,10 @@ export const content: Record<Locale, Content> = {
           title: 'Tools & Geodata',
           items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
         },
+        {
+          title: 'Languages',
+          items: ['Russian (C1)', 'Kazakh (native)', 'English (B2 — technical)'],
+        },
       ],
     },
     projects: {
@@ -299,22 +298,13 @@ export const content: Record<Locale, Content> = {
       index: '06',
       items: [
         {
-          title: 'Project name',
-          description: 'A short description of the project: what it is and what problem it solves.',
-          tags: ['React', 'TypeScript'],
-          link: '#',
-        },
-        {
-          title: 'Project name',
-          description: 'A short description of the project: what it is and what problem it solves.',
-          tags: ['Node.js', 'PostgreSQL'],
-          link: '#',
-        },
-        {
-          title: 'Project name',
-          description: 'A short description of the project: what it is and what problem it solves.',
-          tags: ['Next.js', 'Tailwind'],
-          link: '#',
+          period: 'Jan 2026 — Feb 2026',
+          title: 'E-commerce Logistics Research',
+          subtitle: 'Co-authored with Dr. Kamal Imran Mohd Sharif',
+          bullets: [
+            'Co-authored with Professor Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia), conducted a quantitative study on last-mile delivery analytics.',
+            'Processed a dataset of 10,000,000+ transactions in R using binary logistic regression to evaluate the trade-off between delivery speed and reliability.',
+          ],
         },
       ],
     },

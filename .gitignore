@@ -16,6 +16,11 @@ dist-ssr
 # reference-only external project, not part of this repo
 /perricheno-site
 
+# local resume source folders — synced into public/ by scripts/sync-resumes.mjs,
+# not committed as-is (may contain personal info in unexpected filenames)
+/rucvfile
+/engcvfile
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

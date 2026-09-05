@@ -1,4 +1,3 @@
-import { ArrowUpRight } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -7,34 +6,50 @@ export function Projects() {
 
   return (
     <Section id="projects" index={t.projects.index} title={t.projects.title}>
-      <div className="grid gap-6 sm:grid-cols-2">
+      <ol className="space-y-6">
         {t.projects.items.map((project, i) => (
-          <a
+          <li
             key={`${project.title}-${i}`}
-            href={project.link ?? '#'}
-            className="group rounded-2xl border border-[var(--border)] p-6 transition-colors hover:border-[var(--accent)]"
+            className="grid gap-1 md:grid-cols-[160px_1fr]"
           >
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="font-medium text-[var(--text-h)]">{project.title}</h3>
-              <ArrowUpRight
-                size={18}
-                className="shrink-0 text-[var(--text)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
-              />
-            </div>
-            <p className="mt-2 text-sm text-[var(--text)]">{project.description}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-[var(--surface)] px-2.5 py-1 font-mono text-xs text-[var(--text)]"
+            <span className="font-mono text-sm text-[var(--text)]">{project.period}</span>
+            <div>
+              {project.link ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-[var(--text-h)] underline decoration-[var(--border)] underline-offset-2 hover:decoration-[var(--text-h)]"
                 >
-                  {tag}
-                </span>
-              ))}
+                  {project.title}
+                </a>
+              ) : (
+                <h3 className="font-medium text-[var(--text-h)]">{project.title}</h3>
+              )}
+              {project.subtitle && (
+                <p className="text-sm text-[var(--text)]">{project.subtitle}</p>
+              )}
+              <ul className="mt-2 list-disc space-y-1.5 pl-4 text-[var(--text)]">
+                {project.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+              {project.tags && project.tags.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-[var(--surface)] px-2.5 py-1 font-mono text-xs text-[var(--text)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-          </a>
+          </li>
         ))}
-      </div>
+      </ol>
     </Section>
   )
 }
