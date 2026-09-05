@@ -67,7 +67,7 @@ export const content: Record<Locale, Content> = {
       education: 'Образование',
       certificates: 'Сертификаты',
       skills: 'Навыки',
-      projects: 'Проекты',
+      projects: 'Проекты & Наука',
       contact: 'Контакты',
     },
     hero: {
@@ -132,16 +132,36 @@ export const content: Record<Locale, Content> = {
       ],
     },
     skills: {
-      title: 'Навыки',
+      title: 'Технические навыки',
       index: '05',
       groups: [
-        { title: 'Технологии', items: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'] },
-        { title: 'Инструменты', items: ['Git', 'Figma', 'Docker', 'CI/CD'] },
-        { title: 'Языки', items: ['Русский — родной', 'Английский — B2'] },
+        { title: 'Языки программирования', items: ['Python', 'R'] },
+        {
+          title: 'Базы данных & Аналитика',
+          items: ['PostgreSQL', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau'],
+        },
+        {
+          title: 'Backend & Архитектура',
+          items: ['Микросервисы', 'Multi-Agent Systems', 'RAG Architectures', 'NLP (spaCy)'],
+        },
+        {
+          title: 'DevOps & Cloud',
+          items: [
+            'Linux (администрирование серверов Ubuntu/Debian)',
+            'Google Cloud Platform (Compute Engine, VPC, VDS)',
+            'Docker',
+            'CI/CD автоматизация (GitHub Actions)',
+            'Cloudflare',
+          ],
+        },
+        {
+          title: 'Инструменты & Геоданные',
+          items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
+        },
       ],
     },
     projects: {
-      title: 'Проекты',
+      title: 'Проекты & Научная деятельность',
       index: '06',
       items: [
         {
@@ -182,7 +202,7 @@ export const content: Record<Locale, Content> = {
       education: 'Education',
       certificates: 'Certificates',
       skills: 'Skills',
-      projects: 'Projects',
+      projects: 'Projects & Research',
       contact: 'Contact',
     },
     hero: {
@@ -246,16 +266,36 @@ export const content: Record<Locale, Content> = {
       ],
     },
     skills: {
-      title: 'Skills',
+      title: 'Technical Skills',
       index: '05',
       groups: [
-        { title: 'Technology', items: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'] },
-        { title: 'Tools', items: ['Git', 'Figma', 'Docker', 'CI/CD'] },
-        { title: 'Languages', items: ['English — fluent', 'Russian — native'] },
+        { title: 'Programming Languages', items: ['Python', 'R'] },
+        {
+          title: 'Databases & Analytics',
+          items: ['PostgreSQL', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI', 'Tableau'],
+        },
+        {
+          title: 'Backend & Architecture',
+          items: ['Microservices', 'Multi-Agent Systems', 'RAG Architectures', 'NLP (spaCy)'],
+        },
+        {
+          title: 'DevOps & Cloud',
+          items: [
+            'Linux (Ubuntu/Debian server administration)',
+            'Google Cloud Platform (Compute Engine, VPC, VDS)',
+            'Docker',
+            'CI/CD automation (GitHub Actions)',
+            'Cloudflare',
+          ],
+        },
+        {
+          title: 'Tools & Geodata',
+          items: ['Git / GitHub', 'OpenStreetMap (OSM)', 'LaTeX', 'TikZ', 'Figma'],
+        },
       ],
     },
     projects: {
-      title: 'Projects',
+      title: 'Projects & Research',
       index: '06',
       items: [
         {

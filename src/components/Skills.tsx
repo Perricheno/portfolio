@@ -6,17 +6,20 @@ export function Skills() {
 
   return (
     <Section id="skills" index={t.skills.index} title={t.skills.title}>
-      <div className="grid gap-8 sm:grid-cols-3">
+      <div className="space-y-5">
         {t.skills.groups.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-3 text-sm font-medium uppercase tracking-wide text-[var(--text-h)]">
-              {group.title}
-            </h3>
-            <ul className="space-y-1.5 text-[var(--text)]">
+          <div key={group.title} className="grid gap-2 sm:grid-cols-[220px_1fr] sm:gap-6">
+            <h3 className="text-sm font-semibold text-[var(--text-h)]">{group.title}</h3>
+            <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
-                <li key={item}>{item}</li>
+                <span
+                  key={item}
+                  className="rounded-full bg-[var(--surface)] px-3 py-1 text-sm text-[var(--text)]"
+                >
+                  {item}
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>

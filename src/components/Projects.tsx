@@ -8,9 +8,9 @@ export function Projects() {
   return (
     <Section id="projects" index={t.projects.index} title={t.projects.title}>
       <div className="grid gap-6 sm:grid-cols-2">
-        {t.projects.items.map((project) => (
+        {t.projects.items.map((project, i) => (
           <a
-            key={project.title}
+            key={`${project.title}-${i}`}
             href={project.link ?? '#'}
             className="group rounded-2xl border border-[var(--border)] p-6 transition-colors hover:border-[var(--accent)]"
           >
