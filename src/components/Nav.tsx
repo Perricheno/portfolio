@@ -1,7 +1,12 @@
+import { Globe as GlobeIcon, Moon, Sun } from 'lucide-react'
+import { useGlobeStyle } from '../globe/GlobeStyleContext'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useTheme } from '../theme/ThemeContext'
 
 export function Nav() {
   const { t, locale, toggleLocale } = useLanguage()
+  const { theme, toggleTheme } = useTheme()
+  const { cycleStyle } = useGlobeStyle()
 
   const links: [string, string][] = [
     ['#about', t.nav.about],
@@ -19,7 +24,7 @@ export function Nav() {
         <a href="#top" className="text-sm font-bold tracking-tight text-[var(--text-h)]">
           {t.hero.name}
         </a>
-        <ul className="hidden gap-5 text-sm text-[var(--text)] lg:flex">
+        <ul className="hidden gap-4 text-sm text-[var(--text)] lg:flex">
           {links.map(([href, label]) => (
             <li key={href}>
               <a href={href} className="transition-colors hover:text-[var(--text-h)]">
@@ -28,14 +33,32 @@ export function Nav() {
             </li>
           ))}
         </ul>
-        <button
-          type="button"
-          onClick={toggleLocale}
-          className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
-          aria-label="Toggle language"
-        >
-          {locale === 'ru' ? 'EN' : 'RU'}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={cycleStyle}
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
+            aria-label="Change globe style"
+          >
+            <GlobeIcon size={14} />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => toggleTheme({ x: e.clientX, y: e.clientY })}
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+          <button
+            type="button"
+            onClick={toggleLocale}
+            className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
+            aria-label="Toggle language"
+          >
+            {locale === 'ru' ? 'EN' : 'RU'}
+          </button>
+        </div>
       </nav>
     </header>
   )

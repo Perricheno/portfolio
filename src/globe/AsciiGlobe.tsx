@@ -1,0 +1,123 @@
+import { useEffect, useRef } from 'react'
+import * as THREE from 'three'
+import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect.js'
+import { feature } from 'topojson-client'
+import type { GeometryCollection, Topology } from 'topojson-specification'
+import countries110m from 'world-atlas/countries-110m.json'
+import type { VisitorLocation } from './useVisitorLocation'
+
+const ME = { lat: 51.1801, lng: 71.446, city: 'Астана' }
+
+const countryFeatures = feature(
+  countries110m as unknown as Topology,
+  (countries110m as unknown as Topology).objects.countries as GeometryCollection,
+).features
+
+function project(lon: number, lat: number, w: number, h: number): [number, number] {
+  return [((lon + 180) / 360) * w, ((90 - lat) / 180) * h]
+}
+
+function buildTexture(visitor: VisitorLocation | null): HTMLCanvasElement {
+  const w = 800
+  const h = 400
+  const canvas = document.createElement('canvas')
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext('2d')!
+  ctx.fillStyle = '#000'
+  ctx.fillRect(0, 0, w, h)
+  ctx.fillStyle = '#ddd'
+
+  const drawRing = (ring: number[][]) => {
+    ctx.beginPath()
+    ring.forEach(([lon, lat], i) => {
+      const [x, y] = project(lon, lat, w, h)
+      if (i === 0) ctx.moveTo(x, y)
+      else ctx.lineTo(x, y)
+    })
+    ctx.closePath()
+    ctx.fill()
+  }
+
+  for (const f of countryFeatures) {
+    const geom = f.geometry
+    if (!geom) continue
+    if (geom.type === 'Polygon') {
+      geom.coordinates.forEach((ring) => drawRing(ring as number[][]))
+    } else if (geom.type === 'MultiPolygon') {
+      geom.coordinates.forEach((poly) => poly.forEach((ring) => drawRing(ring as number[][])))
+    }
+  }
+
+  ctx.fillStyle = '#fff'
+  const [mx, my] = project(ME.lng, ME.lat, w, h)
+  ctx.beginPath()
+  ctx.arc(mx, my, 7, 0, Math.PI * 2)
+  ctx.fill()
+
+  if (visitor) {
+    const [vx, vy] = project(visitor.lng, visitor.lat, w, h)
+    ctx.beginPath()
+    ctx.arc(vx, vy, 7, 0, Math.PI * 2)
+    ctx.fill()
+  }
+
+  return canvas
+}
+
+export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const size = container.offsetWidth || 300
+
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
+    camera.position.z = 3.2
+
+    const texture = new THREE.CanvasTexture(buildTexture(visitor))
+    const sphere = new THREE.Mesh(
+      new THREE.SphereGeometry(1.3, 48, 48),
+      new THREE.MeshBasicMaterial({ map: texture }),
+    )
+    scene.add(sphere)
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true })
+    renderer.setSize(size, size)
+
+    const effect = new AsciiEffect(renderer, ' .:-=+*#%@', { resolution: 0.22, invert: false })
+    effect.setSize(size, size)
+    effect.domElement.style.color = 'var(--text-h)'
+    effect.domElement.style.backgroundColor = 'transparent'
+    effect.domElement.style.pointerEvents = 'none'
+    effect.domElement.style.touchAction = 'pan-y'
+    effect.domElement.style.overflow = 'hidden'
+
+    container.replaceChildren(effect.domElement)
+
+    let raf: number
+    const animate = () => {
+      sphere.rotation.y += 0.0035
+      effect.render(scene, camera)
+      raf = requestAnimationFrame(animate)
+    }
+    animate()
+
+    return () => {
+      cancelAnimationFrame(raf)
+      renderer.dispose()
+      texture.dispose()
+      container.replaceChildren()
+    }
+  }, [visitor])
+
+  return (
+    <div
+      ref={containerRef}
+      className="aspect-square w-full overflow-hidden text-[8px] leading-none"
+      style={{ touchAction: 'pan-y' }}
+    />
+  )
+}

@@ -1,8 +1,6 @@
-import { lazy, Suspense } from 'react'
+import { Globe } from './Globe'
 import { resumeLinks } from '../data/resumeLinks.generated'
 import { useLanguage } from '../i18n/LanguageContext'
-
-const Globe = lazy(() => import('./Globe').then((m) => ({ default: m.Globe })))
 
 export function Hero() {
   const { t, locale } = useLanguage()
@@ -39,9 +37,7 @@ export function Hero() {
         </div>
       </div>
       <div className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end">
-        <Suspense fallback={<div className="aspect-square w-full rounded-full bg-[var(--surface)]" />}>
-          <Globe />
-        </Suspense>
+        <Globe />
       </div>
     </section>
   )

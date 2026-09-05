@@ -69,7 +69,7 @@ export const content: Record<Locale, Content> = {
       education: 'Образование',
       certificates: 'Сертификаты',
       skills: 'Навыки',
-      projects: 'Проекты & Наука',
+      projects: 'Проекты',
       contact: 'Контакты',
     },
     hero: {
@@ -198,7 +198,7 @@ export const content: Record<Locale, Content> = {
       education: 'Education',
       certificates: 'Certificates',
       skills: 'Skills',
-      projects: 'Projects & Research',
+      projects: 'Projects',
       contact: 'Contact',
     },
     hero: {
