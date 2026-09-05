@@ -9,7 +9,7 @@
     "not_found_handling": "single-page-application"
   },
   "analytics_engine_datasets": [
-    { "binding": "ANALYTICS", "dataset": "cv_visits" }
+    { "binding": "analyticseng", "dataset": "data" }
   ],
   "observability": {
     "enabled": true

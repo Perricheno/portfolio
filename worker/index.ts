@@ -1,6 +1,6 @@
 export interface Env {
   ASSETS: Fetcher
-  ANALYTICS: AnalyticsEngineDataset
+  analyticseng: AnalyticsEngineDataset
 }
 
 export default {
@@ -11,7 +11,7 @@ export default {
     ctx.waitUntil(
       (async () => {
         try {
-          env.ANALYTICS?.writeDataPoint({
+          env.analyticseng?.writeDataPoint({
             blobs: [
               url.pathname,
               String(cf?.country ?? 'XX'),
