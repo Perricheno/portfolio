@@ -16,8 +16,8 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur">
       <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2">
-          <img src="/favicon.svg" alt="Logo" className="h-7 w-7" />
+        <a href="#top" className="text-sm font-bold tracking-tight text-[var(--text-h)]">
+          {t.hero.name}
         </a>
         <ul className="hidden gap-5 text-sm text-[var(--text)] lg:flex">
           {links.map(([href, label]) => (

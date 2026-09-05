@@ -10,7 +10,7 @@
   --accent: #0a0a0a;
   --accent-bg: rgba(10, 10, 10, 0.06);
 
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
   --mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
   color-scheme: light dark;
