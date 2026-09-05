@@ -2,15 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
   "compatibility_date": "2026-09-05",
-  "main": "worker/index.ts",
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
   },
-  "analytics_engine_datasets": [
-    { "binding": "analyticseng", "dataset": "data" }
-  ],
   "observability": {
     "enabled": true
   }
