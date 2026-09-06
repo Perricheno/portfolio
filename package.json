@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/sync-resumes.mjs",
+    "predev": "node scripts/sync-resumes.mjs && node scripts/sync-seo.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/sync-resumes.mjs",
+    "prebuild": "node scripts/sync-resumes.mjs && node scripts/sync-seo.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
