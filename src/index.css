@@ -113,35 +113,26 @@ button {
   }
 }
 
-/* Print: the on-screen "floating card on gray backdrop" look (and dark
-   mode, if the visitor had it toggled on) don't belong on paper — force
-   the light palette, drop the backdrop/shadow/rounding so the page reads
-   as a plain document, and keep list items from splitting mid-entry
-   across a page break. The interactive-only chrome (nav bar, globe,
-   hero buttons) is hidden via print: classes on the elements themselves. */
+/* Print: the on-screen "floating card on gray backdrop" look doesn't
+   belong on paper — drop the backdrop/shadow/rounding so the page reads
+   as a plain document, shrink type/spacing to fit the whole résumé into
+   a couple of pages, and keep list items from splitting mid-entry across
+   a page break. Whichever theme (light/dark) the visitor had active is
+   kept as-is — this only touches sizing/layout, not color. The globe and
+   the interactive-only chrome (nav bar, hero buttons) are handled via
+   print: classes on the elements themselves. */
 @media print {
-  :root,
-  :root[data-theme='dark'] {
-    --page-bg: #ffffff;
-    --bg: #ffffff;
-    --surface: #f0f0f0;
-    --text: #333333;
-    --text-h: #000000;
-    --border: #cccccc;
-    --accent: #000000;
-    --accent-bg: transparent;
-  }
-
   @page {
-    margin: 14mm;
+    margin: 12mm;
   }
 
   html {
-    font-size: 100%;
+    font-size: 62%;
   }
 
   body {
-    background: #ffffff;
+    font-size: 9.5px;
+    line-height: 1.4;
   }
 
   * {
@@ -151,8 +142,84 @@ button {
     -webkit-print-color-adjust: exact;
   }
 
+  h1,
   h2,
   h3 {
     break-after: avoid-page;
+  }
+}
+
+/* Hero+About shared grid (see Intro.tsx) — one set of named areas so the
+   (single, heavy) globe instance can be repositioned by CSS alone between
+   the screen layout (beside the name/role block) and the print layout
+   (beside About) without unmounting/remounting it. */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  grid-template-areas:
+    'name'
+    'role'
+    'tagline'
+    'buttons'
+    'globe'
+    'aboutHeader'
+    'aboutBody';
+}
+
+.intro-grid[data-globe='off'] {
+  grid-template-areas:
+    'name'
+    'role'
+    'tagline'
+    'buttons'
+    'aboutHeader'
+    'aboutBody';
+}
+
+@media (min-width: 768px) {
+  .intro-grid {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    grid-template-areas:
+      'name        globe'
+      'role        globe'
+      'tagline     globe'
+      'buttons     globe'
+      'aboutHeader aboutHeader'
+      'aboutBody   aboutBody';
+  }
+
+  .intro-grid[data-globe='off'] {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'name'
+      'role'
+      'tagline'
+      'buttons'
+      'aboutHeader'
+      'aboutBody';
+  }
+}
+
+@media print {
+  .intro-grid {
+    gap: 0.4rem 1.2rem;
+    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'name        name'
+      'role        role'
+      'aboutHeader globe'
+      'aboutBody   globe';
+  }
+
+  .intro-grid[data-globe='off'] {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'name'
+      'role'
+      'aboutHeader'
+      'aboutBody';
   }
 }

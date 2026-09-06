@@ -8,24 +8,24 @@ export function Experience() {
 
   return (
     <Section id="experience" icon={Briefcase} title={t.experience.title}>
-      <ol className="space-y-6">
+      <ol className="space-y-6 print:space-y-1.5">
         {t.experience.items.map((item) => (
           <li
             key={`${item.company}-${item.period}`}
-            className="grid gap-1 print:break-inside-avoid md:grid-cols-[160px_1fr]"
+            className="grid gap-1 print:break-inside-avoid print:gap-0.5 md:grid-cols-[160px_1fr] print:grid-cols-[70px_1fr]"
           >
-            <span className="font-mono text-sm text-[var(--text)]">{item.period}</span>
+            <span className="font-mono text-sm text-[var(--text)] print:text-[7px]">{item.period}</span>
             <div>
               <h3 className="font-medium text-[var(--text-h)]">
                 {item.role} · {item.company}
               </h3>
               {item.description && (
-                <p className="mt-1 font-light leading-relaxed text-[var(--text)]">
+                <p className="mt-1 font-light leading-relaxed text-[var(--text)] print:mt-0.5">
                   {renderInline(item.description)}
                 </p>
               )}
               {item.bullets && item.bullets.length > 0 && (
-                <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)]">
+                <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)] print:mt-0.5 print:space-y-0.5 print:pl-3">
                   {item.bullets.map((bullet) => (
                     <li key={bullet}>{renderInline(bullet)}</li>
                   ))}

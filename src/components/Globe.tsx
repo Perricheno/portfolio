@@ -28,14 +28,14 @@ export function Globe() {
         {style === 'dots' && <DotsGlobe visitor={visitor} />}
         {style === 'ascii' && <AsciiGlobe visitor={visitor} />}
       </Suspense>
-      <div className="mt-2 flex flex-col items-center gap-1 text-xs text-[var(--text)]">
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-h)]" />
+      <div className="mt-2 flex flex-col items-center gap-1 text-xs text-[var(--text)] print:mt-1 print:text-[6px]">
+        <span className="flex items-center gap-1.5 print:gap-1">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-h)] print:h-1 print:w-1" />
           {meLabel} — {ME_CITY}
         </span>
         {checked && visitor && (
-          <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-h)]" />
+          <span className="flex items-center gap-1.5 print:gap-1">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-h)] print:h-1 print:w-1" />
             {youLabel} — {visitor.city}
           </span>
         )}

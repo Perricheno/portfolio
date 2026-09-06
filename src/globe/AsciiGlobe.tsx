@@ -88,6 +88,11 @@ export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
       new THREE.SphereGeometry(1.3, 48, 48),
       new THREE.MeshBasicMaterial({ map: texture }),
     )
+    // THREE.SphereGeometry's default UV mapping faces the camera at u≈0.25
+    // of the texture, which for our equirectangular canvas is ~90°W — the
+    // Pacific, almost entirely ocean. Rotating 180° brings Africa/Europe/
+    // Asia (and the "me" marker) to the front instead.
+    sphere.rotation.y = Math.PI
     scene.add(sphere)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true })
@@ -111,14 +116,30 @@ export function AsciiGlobe({ visitor }: { visitor: VisitorLocation | null }) {
     container.replaceChildren(effect.domElement)
 
     let raf: number
+    let printing = false
     const animate = () => {
-      sphere.rotation.y += 0.0035
+      if (!printing) sphere.rotation.y += 0.0035
       effect.render(scene, camera)
       raf = requestAnimationFrame(animate)
     }
     animate()
 
+    // Freeze on the land-heavy orientation it opens on for printing
+    // instead of whatever mid-spin frame the rotation landed on.
+    const freezeForPrint = () => {
+      printing = true
+      sphere.rotation.y = Math.PI
+      effect.render(scene, camera)
+    }
+    const resumeAfterPrint = () => {
+      printing = false
+    }
+    window.addEventListener('beforeprint', freezeForPrint)
+    window.addEventListener('afterprint', resumeAfterPrint)
+
     return () => {
+      window.removeEventListener('beforeprint', freezeForPrint)
+      window.removeEventListener('afterprint', resumeAfterPrint)
       cancelAnimationFrame(raf)
       renderer.dispose()
       texture.dispose()

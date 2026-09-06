@@ -6,10 +6,12 @@ const ME = { lat: 51.1801, lng: 71.446, city: 'Астана' }
 
 export function DotsGlobe({ visitor }: { visitor: VisitorLocation | null }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    const wrap = wrapRef.current
+    if (!canvas || !wrap) return
 
     const width = canvas.offsetWidth || 220
     let phi = 0
@@ -44,21 +46,63 @@ export function DotsGlobe({ visitor }: { visitor: VisitorLocation | null }) {
       arcHeight: 0.35,
     })
 
+    let printing = false
+
     const animate = () => {
-      phi += 0.0035
+      if (!printing) phi += 0.0035
       globe.update({ phi })
       animationFrame = requestAnimationFrame(animate)
     }
     animationFrame = requestAnimationFrame(animate)
 
+    // Freeze on the map's default (land-heavy) orientation for printing
+    // instead of whatever longitude the continuous rotation landed on.
+    // Browsers' print pipelines also frequently drop live WebGL canvases
+    // from the output entirely — cobe renders synchronously inside
+    // update(), so swap in a still image of the just-drawn frame too.
+    let snapshot: HTMLImageElement | null = null
+    const snapshotForPrint = () => {
+      try {
+        const dataUrl = canvas.toDataURL('image/png')
+        if (!snapshot) {
+          snapshot = new Image()
+          snapshot.className = 'pointer-events-none absolute inset-0 h-full w-full object-contain'
+          wrap.appendChild(snapshot)
+        }
+        snapshot.src = dataUrl
+        canvas.style.visibility = 'hidden'
+      } catch {
+        // Canvas unreadable — nothing we can do, live canvas stays as the
+        // fallback.
+      }
+    }
+    const freezeForPrint = () => {
+      printing = true
+      phi = 0
+      globe.update({ phi })
+      snapshotForPrint()
+      setTimeout(snapshotForPrint, 80)
+    }
+    const resumeAfterPrint = () => {
+      printing = false
+      canvas.style.visibility = ''
+      snapshot?.remove()
+      snapshot = null
+    }
+    window.addEventListener('beforeprint', freezeForPrint)
+    window.addEventListener('afterprint', resumeAfterPrint)
+
     return () => {
+      window.removeEventListener('beforeprint', freezeForPrint)
+      window.removeEventListener('afterprint', resumeAfterPrint)
+      snapshot?.remove()
       cancelAnimationFrame(animationFrame)
       globe.destroy()
     }
   }, [visitor])
 
   return (
-    <div className="aspect-square w-full" style={{ touchAction: 'pan-y' }}>
+    <div ref={wrapRef} className="relative aspect-square w-full" style={{ touchAction: 'pan-y' }}>
       <canvas
         ref={canvasRef}
         style={{ width: '100%', height: '100%', contain: 'layout paint size' }}

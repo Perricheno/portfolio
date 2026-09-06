@@ -1,9 +1,8 @@
-import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { Education } from './components/Education'
 import { Experience } from './components/Experience'
 import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
+import { Intro } from './components/Intro'
 import { Nav } from './components/Nav'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
@@ -14,8 +13,7 @@ function App() {
       <div className="mx-auto max-w-[1160px] overflow-hidden bg-[var(--bg)] md:rounded-[28px] md:border md:border-[var(--border)] md:shadow-[0_1px_2px_rgba(0,0,0,0.03),0_20px_50px_-30px_rgba(0,0,0,0.15)] print:max-w-full print:overflow-visible print:rounded-none print:border-0 print:shadow-none">
         <Nav />
         <main>
-          <Hero />
-          <About />
+          <Intro />
           <Experience />
           <Education />
           {/* Certificates section hidden for now (only one entry so far) —
