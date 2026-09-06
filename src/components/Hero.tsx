@@ -16,10 +16,7 @@ export function Hero() {
       }`}
     >
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text)]">
-          {t.hero.greeting}
-        </p>
-        <h1 className="mt-2 text-5xl font-bold leading-[1.05] tracking-tight text-[var(--text-h)] md:text-7xl">
+        <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-[var(--text-h)] md:text-7xl">
           {t.hero.name}
         </h1>
         <p className="mt-3 text-xl font-medium text-[var(--text)] md:text-2xl">{t.hero.role}</p>

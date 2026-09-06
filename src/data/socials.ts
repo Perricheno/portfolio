@@ -1,6 +1,6 @@
 import { Mail, Send } from 'lucide-react'
 import type { ComponentType } from 'react'
-import { GithubIcon, LinkedinIcon } from '../components/icons'
+import { LinkedinIcon } from '../components/icons'
 
 export interface SocialLink {
   label: string
@@ -9,10 +9,16 @@ export interface SocialLink {
 }
 
 // Add or remove entries here to control which social links show up
-// in the Contact section and footer — nothing else needs to change.
+// in the Contact section — nothing else needs to change.
+// GitHub (github.com/Perricheno) is intentionally left out for now —
+// deemed not worth showing; add it back the same way as the others
+// (icon: GithubIcon, from '../components/icons') if that changes.
 export const socials: SocialLink[] = [
-  { label: 'Email', href: 'mailto:name@example.com', icon: Mail },
-  { label: 'GitHub', href: 'https://github.com/username', icon: GithubIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/username', icon: LinkedinIcon },
-  { label: 'Telegram', href: 'https://t.me/username', icon: Send },
+  { label: 'Email', href: 'mailto:amangeldy.toy321@gmail.com', icon: Mail },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/shyngyskhan-amangeldy-099b37324/',
+    icon: LinkedinIcon,
+  },
+  { label: 'Telegram', href: 'https://t.me/perricheno', icon: Send },
 ]

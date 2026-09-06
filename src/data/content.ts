@@ -54,7 +54,7 @@ export interface Content {
     projects: string
     contact: string
   }
-  hero: { greeting: string; name: string; role: string; tagline: string; cta: string; resume: string }
+  hero: { name: string; role: string; tagline: string; cta: string; resume: string }
   about: { title: string; markdown: string }
   experience: { title: string; items: ExperienceItem[] }
   education: { title: string; items: EducationItem[] }
@@ -75,7 +75,6 @@ export interface Content {
 // in src/content/site.ru.md and site.en.md instead — see TEMPLATE.md there.
 const ui = {
   ru: {
-    greeting: 'Привет, я',
     cta: 'Связаться',
     resume: 'Скачать резюме',
     viewOriginal: 'Открыть оригинал',
@@ -84,7 +83,6 @@ const ui = {
     copyright: (name: string) => `© 2026 ${name}. Все права защищены.`,
   },
   en: {
-    greeting: "Hi, I'm",
     cta: 'Get in touch',
     resume: 'Download résumé',
     viewOriginal: 'View original',
@@ -113,7 +111,6 @@ function buildContent(locale: Locale): Content {
       contact: site.contactNav,
     },
     hero: {
-      greeting: u.greeting,
       name: site.heroName,
       role: site.heroRole,
       tagline: site.heroTagline,

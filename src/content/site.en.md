@@ -8,8 +8,6 @@ I build network and cloud infrastructure, automate business processes, and ship 
 
 I specialize in network infrastructure. Commercial experience at JSC "Kazakhstan Temir Zholy" as a DevOps and ML Engineer on a freight-locomotive automation project. Academic (research) experience — joint work with Professor Dr. Kamal Imran Mohd Sharif. Currently in my 3rd (final) year at Astana IT University.
 
-Co-founder and CTO of Tirek Systems.
-
 ## Experience
 
 ### DevOps and ML Engineer (internship) | JSC "Kazakhstan Temir Zholy" | Jan 2026 — Jun 2026
@@ -18,7 +16,7 @@ Co-founder and CTO of Tirek Systems.
 - **Geodata & simulation:** integrated interactive maps built on OpenStreetMap (OSM) and OpenRailwayMap. Designed a sandbox environment for simulating and testing train schedules and emergency scenarios.
 - The project never got final sign-off from management; potential savings are estimated at ₸40–50K/hour (up to ₸500K per locomotive).
 
-### Chief Technical Specialist & Sales Analyst | Retail Business on Kaspi.kz | Jun 2026 — Sep 2026
+### Chief Technical Specialist | Chalov Sole Proprietorship | Jun 2026 — Sep 2026
 
 - Set up and maintained the equipment fleet: all-in-one PCs, routers, IP cameras, laptops, printers.
 - Built an internal service for staff: Kaspi auto-invoicing, fast printing of custom-designed labels and barcodes, Kaspi order notifications.
@@ -32,7 +30,7 @@ Co-founder and CTO of Tirek Systems.
 
 ### Data Scientist and Machine Learning Engineer (internship) | Wipon LLP | Sep 2026 — Dec 15, 2026
 
-### CTO, Co-founder | Tirek Systems | Dec 2024 — present
+### CTO, Co-founder | Tirek Systems and Solutions LLP | Dec 2024 — Aug 2026
 
 - Designed a platform for accelerating academic writing and large-scale data analysis — **[perricheno.com](https://perricheno.com)**. Astana Hub Startups participant. "Explore, write, analyze, cite, visualize — all in one place."
 - **LLM Agents:** designed an asynchronous, multi-layer multi-agent system with layered generation across 6 stages. Built an internal LaTeX compilation service (on TeX Live Full) written in Go — speeding up compilation 4x.
