@@ -12,7 +12,7 @@ I specialize in network infrastructure. Commercial experience at JSC "Kazakhstan
 
 ### DevOps and ML Engineer (internship) | JSC "Kazakhstan Temir Zholy" | Jan 2026 — Jun 2026
 
-- **Logistics optimization service:** as part of a team, built an enterprise system to reduce 8–12 hour locomotive downtime across a network of 1,000+ stations for a major joint-stock company (an IPO-process participant). Implemented an ML model to auto-select optimal candidates among 90 locomotives.
+- **Logistics optimization service:** as part of a team, built an enterprise system to reduce 8–12 hour locomotive downtime across a network of 1,000+ stations for a major joint-stock company (an IPO-process participant). Implemented an algorithm to auto-select optimal candidates among 90 locomotives.
 - **Geodata & simulation:** integrated interactive maps built on OpenStreetMap (OSM) and OpenRailwayMap. Designed a sandbox environment for simulating and testing train schedules and emergency scenarios.
 - The project never got final sign-off from management; potential savings are estimated at ₸40–50K/hour (up to ₸500K per locomotive).
 
@@ -58,15 +58,11 @@ I specialize in network infrastructure. Commercial experience at JSC "Kazakhstan
 ### Databases & Analytics
 
 - PostgreSQL
-- Pandas
-- Matplotlib
-- Seaborn
 - Power BI
 - Tableau
 
-### Backend & Architecture
+### ML & AI Systems
 
-- Microservices
 - Multi-Agent Systems
 - LLM
 - XGBoost
@@ -76,17 +72,21 @@ I specialize in network infrastructure. Commercial experience at JSC "Kazakhstan
 - Linux (Ubuntu/Debian server administration)
 - Google Cloud Platform (Compute Engine, VPC, VDS)
 - Kubernetes (k3s)
+- Microservices
 - Docker
 - CI/CD automation (GitHub Actions, GitLab CI)
-- Cloudflare
+- Cloudflare Workers
+- Cloudflare Tunnel
+- Cloudflare DNS
+- Cloudflare Analytics
 
 ### Tools & Geodata
 
-- Git / GitHub / GitLab
-- OpenStreetMap (OSM)
-- LaTeX
-- TikZ
-- Figma
+- Git / GitHub / GitLab (version control)
+- OpenStreetMap / OSM (geodata, cartography)
+- LaTeX (documentation, academic papers)
+- TikZ (visualization, diagrams)
+- Figma (UI mockups, diagrams)
 
 ### Languages
 
@@ -114,6 +114,6 @@ Co-author: Yedil Talasbekov (ML Engineer) · AI for Finance Decisions course (AI
 
 Tags: Python, XGBoost, Gemini API, MLOps, Forecasting
 
-## Get in touch
+## Contact
 
 Open to new projects and opportunities. Reach out — I usually reply within a day.
