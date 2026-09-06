@@ -6,7 +6,7 @@ export function Experience() {
 
   return (
     <Section id="experience" index={t.experience.index} title={t.experience.title}>
-      <ol className="space-y-5">
+      <ol className="space-y-6">
         {t.experience.items.map((item) => (
           <li key={`${item.company}-${item.period}`} className="grid gap-1 md:grid-cols-[160px_1fr]">
             <span className="font-mono text-sm text-[var(--text)]">{item.period}</span>
@@ -14,7 +14,18 @@ export function Experience() {
               <h3 className="font-medium text-[var(--text-h)]">
                 {item.role} · {item.company}
               </h3>
-              <p className="mt-1 font-light leading-relaxed text-[var(--text)]">{item.description}</p>
+              {item.description && (
+                <p className="mt-1 font-light leading-relaxed text-[var(--text)]">
+                  {item.description}
+                </p>
+              )}
+              {item.bullets && item.bullets.length > 0 && (
+                <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)]">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </li>
         ))}

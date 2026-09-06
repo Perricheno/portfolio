@@ -8,7 +8,8 @@ export interface ExperienceItem {
   period: string
   role: string
   company: string
-  description: string
+  description?: string
+  bullets?: string[]
 }
 
 export interface EducationItem {

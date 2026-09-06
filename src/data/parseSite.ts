@@ -106,7 +106,15 @@ export function parseSite(source: string): ParsedSite {
           .filter((n): n is MdContent & { type: 'paragraph' } => n.type === 'paragraph')
           .map((n) => mdToString(n))
           .join(' ')
-        return { role: parts[0] ?? '', company: parts[1] ?? '', period: parts[2] ?? '', description }
+        const list = body.find((n): n is List => n.type === 'list')
+        const bullets = list ? list.children.map((li) => mdToString(li).trim()) : undefined
+        return {
+          role: parts[0] ?? '',
+          company: parts[1] ?? '',
+          period: parts[2] ?? '',
+          description: description || undefined,
+          bullets,
+        }
       })
     : []
 

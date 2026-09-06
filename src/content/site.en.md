@@ -1,28 +1,43 @@
-# First Last
+# Amangeldy Shyngyskhan
 
-Role / specialization
+DevOps & System Analyst
 
-A short line about what you do and what you are great at — one or two sentences.
+I build network and cloud infrastructure, automate business processes, and ship ML — from industrial projects to my own product.
 
 ## About me
 
-A short story about your professional path: who you are, what you do, and what drives you.
+I specialize in network infrastructure. Commercial experience at JSC "Kazakhstan Temir Zholy" as a DevOps and ML Engineer on a freight-locomotive automation project. Academic (research) experience — joint work with Professor Dr. Kamal Imran Mohd Sharif. Currently in my 3rd (final) year at Astana IT University.
 
-A second paragraph about your approach to work, values, or what sets you apart.
+Co-founder and CTO of Tirek Systems.
 
 ## Experience
 
-### Role | Company XYZ | 2023 — present
+### DevOps and ML Engineer (internship) | JSC "Kazakhstan Temir Zholy" | Jan 2026 — Jun 2026
 
-Brief description of responsibilities and achievements in this role.
+Worked on the infrastructure for a freight-locomotive automation service. The project never got final sign-off from management, but by calculation it would have potentially cut operating costs per locomotive in service (exact savings in ₸/hour — to be confirmed).
 
-### Role | Company | 2021 — 2023
+### Chief Technical Specialist | Khasenova Sole Proprietorship | Jun 2026 — Jul 2026
 
-Brief description of responsibilities and achievements in this role.
+- Set up and maintained the equipment fleet: all-in-one PCs, routers, IP cameras, laptops, printers.
+- Built an internal service for staff: Kaspi auto-invoicing, fast printing of custom-designed labels and barcodes, Kaspi order notifications.
+- Automated a YML catalog export for 2GIS Services (4,000+ items) by parsing Kaspi via session cookies, with unique purchase links and photos.
+- Photo-based product search (a 14,000+ image dataset, fine-tuned on top of an existing OpenAI model) — used daily by 25+ employees.
+- Automated collection and analysis of Umag warehouse stock (12,360 SKUs, 270,219 units, ≈₸113.4M at retail / ≈₸63.2M at cost) with separate reports for zero-cost items, negative stock, and low-stock alerts.
+- Automated Kaspi invoice printing for thermal printers; for accounting — automatic generation of commercial proposals, e-invoices, and delivery notes.
 
-### Role | Company | 2019 — 2021
+### Sales Analyst | Chalov Sole Proprietorship | Aug 2026 — Sep 2026
 
-Brief description of responsibilities and achievements in this role.
+- Analyzed 4,000+ active listings on Kaspi and Umag: seasonality, net revenue, excluding items with no cost basis.
+- Extracted 10,000+ unique order numbers from Kaspi over the prior 3 months for analytics.
+- Maintained sales reporting and managed the online warehouse database.
+
+### Data Scientist and Machine Learning Engineer (internship) | Wipon LLP | Sep 2026 — Dec 15, 2026
+
+### CTO, Co-founder | Tirek Systems | Dec 2024 — present
+
+- Built and maintain the Perricheno website — product development, architecture, and infrastructure.
+- Set up GitLab CI/CD workflows with automated testing.
+- Infrastructure on Kubernetes (k3s) and Linux (Ubuntu); integrated AI components into the product.
 
 ## Education
 
@@ -54,20 +69,21 @@ Brief description of responsibilities and achievements in this role.
 
 - Microservices
 - Multi-Agent Systems
-- RAG Architectures
-- NLP (spaCy)
+- LLM
+- XGBoost
 
 ### DevOps & Cloud
 
 - Linux (Ubuntu/Debian server administration)
 - Google Cloud Platform (Compute Engine, VPC, VDS)
+- Kubernetes (k3s)
 - Docker
-- CI/CD automation (GitHub Actions)
+- CI/CD automation (GitHub Actions, GitLab CI)
 - Cloudflare
 
 ### Tools & Geodata
 
-- Git / GitHub
+- Git / GitHub / GitLab
 - OpenStreetMap (OSM)
 - LaTeX
 - TikZ
