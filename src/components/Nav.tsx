@@ -1,4 +1,5 @@
-import { Globe as GlobeIcon, GlobeOff, Moon, Sun } from 'lucide-react'
+import { Globe as GlobeIconData, GlobeOff as GlobeOffData, Moon as MoonData, Sun as SunData } from 'lucide'
+import { MorphIcon } from 'morphicons/react'
 import { useGlobeStyle } from '../globe/GlobeStyleContext'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useTheme } from '../theme/ThemeContext'
@@ -40,7 +41,11 @@ export function Nav() {
             aria-label="Change globe style"
             title={style === 'off' ? 'Globe: off' : `Globe: ${style}`}
           >
-            {style === 'off' ? <GlobeOff size={14} /> : <GlobeIcon size={14} />}
+            <MorphIcon
+              icon={style === 'off' ? GlobeOffData : GlobeIconData}
+              size={14}
+              spring="snappy"
+            />
           </button>
           <button
             type="button"
@@ -48,7 +53,7 @@ export function Nav() {
             className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text-h)]"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+            <MorphIcon icon={theme === 'dark' ? SunData : MoonData} size={14} spring="snappy" />
           </button>
           <button
             type="button"

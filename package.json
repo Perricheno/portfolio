@@ -16,8 +16,10 @@
   "dependencies": {
     "cobe": "^2.0.1",
     "globe.gl": "^2.46.2",
+    "lucide": "^1.41.0",
     "lucide-react": "^1.41.0",
     "mdast-util-to-string": "^4.0.0",
+    "morphicons": "^1.7.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-markdown": "^10.1.0",
