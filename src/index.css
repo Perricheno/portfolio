@@ -112,3 +112,47 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* Print: the on-screen "floating card on gray backdrop" look (and dark
+   mode, if the visitor had it toggled on) don't belong on paper — force
+   the light palette, drop the backdrop/shadow/rounding so the page reads
+   as a plain document, and keep list items from splitting mid-entry
+   across a page break. The interactive-only chrome (nav bar, globe,
+   hero buttons) is hidden via print: classes on the elements themselves. */
+@media print {
+  :root,
+  :root[data-theme='dark'] {
+    --page-bg: #ffffff;
+    --bg: #ffffff;
+    --surface: #f0f0f0;
+    --text: #333333;
+    --text-h: #000000;
+    --border: #cccccc;
+    --accent: #000000;
+    --accent-bg: transparent;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid-page;
+  }
+}

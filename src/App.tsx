@@ -10,8 +10,8 @@ import { Skills } from './components/Skills'
 
 function App() {
   return (
-    <div className="min-h-screen py-0 md:py-10">
-      <div className="mx-auto max-w-[1160px] overflow-hidden bg-[var(--bg)] md:rounded-[28px] md:border md:border-[var(--border)] md:shadow-[0_1px_2px_rgba(0,0,0,0.03),0_20px_50px_-30px_rgba(0,0,0,0.15)]">
+    <div className="min-h-screen py-0 md:py-10 print:py-0">
+      <div className="mx-auto max-w-[1160px] overflow-hidden bg-[var(--bg)] md:rounded-[28px] md:border md:border-[var(--border)] md:shadow-[0_1px_2px_rgba(0,0,0,0.03),0_20px_50px_-30px_rgba(0,0,0,0.15)] print:max-w-full print:overflow-visible print:rounded-none print:border-0 print:shadow-none">
         <Nav />
         <main>
           <Hero />

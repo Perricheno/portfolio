@@ -10,7 +10,10 @@ export function Experience() {
     <Section id="experience" icon={Briefcase} title={t.experience.title}>
       <ol className="space-y-6">
         {t.experience.items.map((item) => (
-          <li key={`${item.company}-${item.period}`} className="grid gap-1 md:grid-cols-[160px_1fr]">
+          <li
+            key={`${item.company}-${item.period}`}
+            className="grid gap-1 print:break-inside-avoid md:grid-cols-[160px_1fr]"
+          >
             <span className="font-mono text-sm text-[var(--text)]">{item.period}</span>
             <div>
               <h3 className="font-medium text-[var(--text-h)]">

@@ -12,7 +12,7 @@ export function Projects() {
         {t.projects.items.map((project, i) => (
           <li
             key={`${project.title}-${i}`}
-            className="grid gap-1 md:grid-cols-[160px_1fr]"
+            className="grid gap-1 print:break-inside-avoid md:grid-cols-[160px_1fr]"
           >
             <span className="font-mono text-sm text-[var(--text)]">{project.period}</span>
             <div>

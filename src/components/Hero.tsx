@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className={`mx-auto grid max-w-4xl grid-cols-1 items-center gap-8 px-6 pb-10 pt-12 md:pb-14 md:pt-16 ${
+      className={`mx-auto grid max-w-4xl grid-cols-1 items-center gap-8 px-6 pb-10 pt-12 md:pb-14 md:pt-16 print:grid-cols-1 print:gap-2 print:pb-4 print:pt-0 ${
         showGlobe ? 'md:grid-cols-[1fr_auto]' : ''
       }`}
     >
@@ -23,7 +23,7 @@ export function Hero() {
         <p className="mt-4 max-w-xl font-light leading-relaxed text-[var(--text)]">
           {t.hero.tagline}
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3 print:hidden">
           <a
             href="#contact"
             className="rounded-full bg-[var(--text-h)] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--bg)] transition-opacity hover:opacity-80"
@@ -41,7 +41,7 @@ export function Hero() {
         </div>
       </div>
       {showGlobe && (
-        <div className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end">
+        <div className="w-full max-w-[300px] justify-self-center print:hidden md:w-[300px] md:justify-self-end">
           <Globe />
         </div>
       )}

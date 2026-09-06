@@ -9,7 +9,10 @@ export function Education() {
     <Section id="education" icon={GraduationCap} title={t.education.title}>
       <ol className="space-y-5">
         {t.education.items.map((item) => (
-          <li key={`${item.institution}-${item.period}`} className="grid gap-1 md:grid-cols-[160px_1fr]">
+          <li
+            key={`${item.institution}-${item.period}`}
+            className="grid gap-1 print:break-inside-avoid md:grid-cols-[160px_1fr]"
+          >
             <span className="font-mono text-sm text-[var(--text)]">{item.period}</span>
             <div>
               <h3 className="font-medium text-[var(--text-h)]">
