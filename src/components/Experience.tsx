@@ -1,5 +1,6 @@
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
+import { renderInline } from '../lib/inlineMarkdown'
 
 export function Experience() {
   const { t } = useLanguage()
@@ -16,13 +17,13 @@ export function Experience() {
               </h3>
               {item.description && (
                 <p className="mt-1 font-light leading-relaxed text-[var(--text)]">
-                  {item.description}
+                  {renderInline(item.description)}
                 </p>
               )}
               {item.bullets && item.bullets.length > 0 && (
                 <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)]">
                   {item.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                    <li key={bullet}>{renderInline(bullet)}</li>
                   ))}
                 </ul>
               )}

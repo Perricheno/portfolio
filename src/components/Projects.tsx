@@ -1,5 +1,6 @@
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
+import { renderInline } from '../lib/inlineMarkdown'
 
 export function Projects() {
   const { t } = useLanguage()
@@ -31,7 +32,7 @@ export function Projects() {
               )}
               <ul className="mt-2 list-disc space-y-1.5 pl-4 font-light leading-relaxed text-[var(--text)]">
                 {project.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
+                  <li key={bullet}>{renderInline(bullet)}</li>
                 ))}
               </ul>
               {project.tags && project.tags.length > 0 && (

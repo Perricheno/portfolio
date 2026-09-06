@@ -14,7 +14,9 @@ Co-founder and CTO of Tirek Systems.
 
 ### DevOps and ML Engineer (internship) | JSC "Kazakhstan Temir Zholy" | Jan 2026 — Jun 2026
 
-Worked on the infrastructure for a freight-locomotive automation service. The project never got final sign-off from management, but by calculation it would have potentially cut operating costs per locomotive in service (exact savings in ₸/hour — to be confirmed).
+- **Logistics optimization service:** as part of a team, built an enterprise system to reduce 8–12 hour locomotive downtime across a network of 1,000+ stations for a major joint-stock company (an IPO-process participant). Implemented an ML model to auto-select optimal candidates among 90 locomotives.
+- **Geodata & simulation:** integrated interactive maps built on OpenStreetMap (OSM) and OpenRailwayMap. Designed a sandbox environment for simulating and testing train schedules and emergency scenarios.
+- The project never got final sign-off from management; potential savings are estimated at ₸40–50K/hour (up to ₸500K per locomotive).
 
 ### Chief Technical Specialist | Khasenova Sole Proprietorship | Jun 2026 — Jul 2026
 
@@ -35,9 +37,11 @@ Worked on the infrastructure for a freight-locomotive automation service. The pr
 
 ### CTO, Co-founder | Tirek Systems | Dec 2024 — present
 
-- Built and maintain the Perricheno website — product development, architecture, and infrastructure.
+- Designed a platform for accelerating academic writing and large-scale data analysis — **[perricheno.com](https://perricheno.com)**. Astana Hub Startups participant. "Explore, write, analyze, cite, visualize — all in one place."
+- **LLM Agents:** designed an asynchronous, multi-layer multi-agent system with layered generation across 6 stages. Built an internal LaTeX compilation service (on TeX Live Full) written in Go — speeding up compilation 4x.
+- **Data Analytics & Compilers:** integrated an isolated compilation service. The platform analyzes millions of rows of data; agents write R / Python / LaTeX / TikZ scripts for statistical analysis and generate precise, editable visualizations across 40+ chart types.
 - Set up GitLab CI/CD workflows with automated testing.
-- Infrastructure on Kubernetes (k3s) and Linux (Ubuntu); integrated AI components into the product.
+- Infrastructure on Kubernetes (k3s) and Linux (Ubuntu).
 
 ## Education
 
@@ -103,6 +107,17 @@ Co-authored with Dr. Kamal Imran Mohd Sharif
 
 - Co-authored with Professor Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia), conducted a quantitative study on last-mile delivery analytics.
 - Processed a dataset of 10,000,000+ transactions in R using binary logistic regression to evaluate the trade-off between delivery speed and reliability.
+
+### AI-First Financial Strategy Synthesis | Feb 2026
+
+Co-author: Yedil Talasbekov (ML Engineer) · AI for Finance Decisions course (AIB 2402)
+
+- **Generative AI experiment:** a 4-week iterative stock-forecasting cycle (GOOGL, ORCL, NET) using Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash, grounded in 10-K filings with live web search; average MAE cut by 93%, reaching $0.35 accuracy for Cloudflare and $0.00 for Alphabet.
+- **Ensemble trading-bot model:** architecture built on XGBoost, Random Forest, and Logistic Regression — 36 pre-trained models covering every forecast horizon, R² consistently above 0.98 on short-term forecasts.
+- **Feature engineering:** an 8-dimensional feature vector (RSI, MACD, Bollinger Bands, 5/20-day SMAs) to improve signal quality.
+- **MLOps & deployment:** a production Telegram bot in Python (python-telegram-bot), full CI/CD on Render.com and GitHub, an asynchronous interface, live data via yfinance, and dynamic matplotlib charts.
+
+Tags: Python, XGBoost, Gemini API, Telegram Bot, MLOps
 
 ## Get in touch
 
