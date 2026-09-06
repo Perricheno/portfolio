@@ -24,7 +24,7 @@ export function Intro() {
   const showGlobe = style !== 'off'
 
   return (
-    <section id="top" className="mx-auto max-w-4xl px-6 pb-10 pt-12 md:pb-14 md:pt-16 print:pb-6 print:pt-4">
+    <section id="top" className="mx-auto max-w-4xl px-6 pb-10 pt-12 md:pb-14 md:pt-16 print:pb-6 print:pt-10">
       <div className="intro-grid" data-globe={showGlobe ? 'on' : 'off'}>
         <div style={{ gridArea: 'name' }}>
           <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-[var(--text-h)] md:text-7xl print:text-2xl">
@@ -63,7 +63,7 @@ export function Intro() {
         {showGlobe && (
           <div
             style={{ gridArea: 'globe' }}
-            className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end print:max-w-none print:justify-self-center"
+            className="w-full max-w-[300px] justify-self-center md:w-[300px] md:justify-self-end print:max-w-[150px] print:justify-self-center"
           >
             <Globe />
           </div>
