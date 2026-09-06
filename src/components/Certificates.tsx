@@ -17,7 +17,7 @@ export function Certificates() {
   }
 
   return (
-    <Section id="certificates" index={t.certificates.index} title={t.certificates.title}>
+    <Section id="certificates" icon={Award} title={t.certificates.title}>
       <ul className="space-y-3">
         {t.certificates.items.map((cert, i) => {
           const isOpen = open.has(i)

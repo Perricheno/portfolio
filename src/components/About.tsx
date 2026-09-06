@@ -1,3 +1,4 @@
+import { User } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Section } from './Section'
@@ -7,7 +8,7 @@ export function About() {
   const { t } = useLanguage()
 
   return (
-    <Section id="about" index={t.about.index} title={t.about.title}>
+    <Section id="about" icon={User} title={t.about.title}>
       <div className="space-y-4 font-light leading-[1.8] text-[var(--text)]">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}

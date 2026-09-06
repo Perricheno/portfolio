@@ -1,3 +1,4 @@
+import { Mail } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 import { socials } from '../data/socials'
@@ -6,7 +7,7 @@ export function Contact() {
   const { t } = useLanguage()
 
   return (
-    <Section id="contact" index={t.contact.index} title={t.contact.title}>
+    <Section id="contact" icon={Mail} title={t.contact.title}>
       <p className="max-w-lg font-light leading-relaxed text-[var(--text)]">{t.contact.text}</p>
       <div className="mt-8 flex flex-wrap gap-3">
         {socials.map(({ label, href, icon: Icon }) => (

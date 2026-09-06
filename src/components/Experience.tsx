@@ -1,3 +1,4 @@
+import { Briefcase } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 import { renderInline } from '../lib/inlineMarkdown'
@@ -6,7 +7,7 @@ export function Experience() {
   const { t } = useLanguage()
 
   return (
-    <Section id="experience" index={t.experience.index} title={t.experience.title}>
+    <Section id="experience" icon={Briefcase} title={t.experience.title}>
       <ol className="space-y-6">
         {t.experience.items.map((item) => (
           <li key={`${item.company}-${item.period}`} className="grid gap-1 md:grid-cols-[160px_1fr]">

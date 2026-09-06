@@ -55,19 +55,18 @@ export interface Content {
     contact: string
   }
   hero: { greeting: string; name: string; role: string; tagline: string; cta: string; resume: string }
-  about: { title: string; index: string; markdown: string }
-  experience: { title: string; index: string; items: ExperienceItem[] }
-  education: { title: string; index: string; items: EducationItem[] }
+  about: { title: string; markdown: string }
+  experience: { title: string; items: ExperienceItem[] }
+  education: { title: string; items: EducationItem[] }
   certificates: {
     title: string
-    index: string
     items: CertificateItem[]
     viewOriginal: string
     noImage: string
   }
-  skills: { title: string; index: string; groups: SkillGroup[] }
-  projects: { title: string; index: string; items: ProjectItem[] }
-  contact: { title: string; index: string; text: string }
+  skills: { title: string; groups: SkillGroup[] }
+  projects: { title: string; items: ProjectItem[] }
+  contact: { title: string; text: string }
   footer: { text: string }
 }
 
@@ -95,8 +94,6 @@ const ui = {
   },
 } as const
 
-const INDEXES = ['01', '02', '03', '04', '05', '06', '07'] as const
-
 function buildContent(locale: Locale): Content {
   const site = parseSite(locale === 'ru' ? siteRu : siteEn)
   const u = ui[locale]
@@ -123,22 +120,19 @@ function buildContent(locale: Locale): Content {
       cta: u.cta,
       resume: u.resume,
     },
-    about: { title: site.aboutTitle, index: INDEXES[0], markdown: site.aboutMarkdown },
-    experience: { title: site.experienceTitle, index: INDEXES[1], items: site.experienceItems },
-    education: { title: site.educationTitle, index: INDEXES[2], items: site.educationItems },
+    about: { title: site.aboutTitle, markdown: site.aboutMarkdown },
+    experience: { title: site.experienceTitle, items: site.experienceItems },
+    education: { title: site.educationTitle, items: site.educationItems },
+    // Certificates is parsed but not rendered right now (see App.tsx).
     certificates: {
       title: site.certificatesTitle,
-      index: INDEXES[3],
       items: site.certificatesItems,
       viewOriginal: u.viewOriginal,
       noImage: u.noImage,
     },
-    // Certificates (index 04) is parsed but not rendered right now (see
-    // App.tsx) — the rest are renumbered so the visible sections read
-    // 01-06 without a gap.
-    skills: { title: site.skillsTitle, index: INDEXES[3], groups: site.skillsGroups },
-    projects: { title: site.projectsTitle, index: INDEXES[4], items: site.projectsItems },
-    contact: { title: site.contactTitle, index: INDEXES[5], text: site.contactText },
+    skills: { title: site.skillsTitle, groups: site.skillsGroups },
+    projects: { title: site.projectsTitle, items: site.projectsItems },
+    contact: { title: site.contactTitle, text: site.contactText },
     footer: { text: u.copyright(site.heroName) },
   }
 }

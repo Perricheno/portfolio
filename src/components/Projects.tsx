@@ -1,3 +1,4 @@
+import { Rocket } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 import { renderInline } from '../lib/inlineMarkdown'
@@ -6,7 +7,7 @@ export function Projects() {
   const { t } = useLanguage()
 
   return (
-    <Section id="projects" index={t.projects.index} title={t.projects.title}>
+    <Section id="projects" icon={Rocket} title={t.projects.title}>
       <ol className="space-y-6">
         {t.projects.items.map((project, i) => (
           <li

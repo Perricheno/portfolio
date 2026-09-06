@@ -1,3 +1,4 @@
+import { GraduationCap } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -5,7 +6,7 @@ export function Education() {
   const { t } = useLanguage()
 
   return (
-    <Section id="education" index={t.education.index} title={t.education.title}>
+    <Section id="education" icon={GraduationCap} title={t.education.title}>
       <ol className="space-y-5">
         {t.education.items.map((item) => (
           <li key={`${item.institution}-${item.period}`} className="grid gap-1 md:grid-cols-[160px_1fr]">

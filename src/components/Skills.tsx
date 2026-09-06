@@ -1,3 +1,4 @@
+import { Cpu } from 'lucide-react'
 import { Section } from './Section'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -5,7 +6,7 @@ export function Skills() {
   const { t } = useLanguage()
 
   return (
-    <Section id="skills" index={t.skills.index} title={t.skills.title}>
+    <Section id="skills" icon={Cpu} title={t.skills.title}>
       <div className="space-y-5">
         {t.skills.groups.map((group) => (
           <div key={group.title} className="grid gap-2 sm:grid-cols-[220px_1fr] sm:gap-6">
