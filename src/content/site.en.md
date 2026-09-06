@@ -18,17 +18,14 @@ Co-founder and CTO of Tirek Systems.
 - **Geodata & simulation:** integrated interactive maps built on OpenStreetMap (OSM) and OpenRailwayMap. Designed a sandbox environment for simulating and testing train schedules and emergency scenarios.
 - The project never got final sign-off from management; potential savings are estimated at ₸40–50K/hour (up to ₸500K per locomotive).
 
-### Chief Technical Specialist | Khasenova Sole Proprietorship | Jun 2026 — Jul 2026
+### Chief Technical Specialist & Sales Analyst | Retail Business on Kaspi.kz | Jun 2026 — Sep 2026
 
 - Set up and maintained the equipment fleet: all-in-one PCs, routers, IP cameras, laptops, printers.
 - Built an internal service for staff: Kaspi auto-invoicing, fast printing of custom-designed labels and barcodes, Kaspi order notifications.
 - Automated a YML catalog export for 2GIS Services (4,000+ items) by parsing Kaspi via session cookies, with unique purchase links and photos.
 - Photo-based product search (a 14,000+ image dataset, fine-tuned on top of an existing OpenAI model) — used daily by 25+ employees.
-- Automated collection and analysis of Umag warehouse stock (12,360 SKUs, 270,219 units, ≈₸113.4M at retail / ≈₸63.2M at cost) with separate reports for zero-cost items, negative stock, and low-stock alerts.
+- Automated collection and analysis of Umag warehouse stock (12,360 SKUs, 270,219 units) with separate reports for zero-cost items, negative stock, and low-stock alerts.
 - Automated Kaspi invoice printing for thermal printers; for accounting — automatic generation of commercial proposals, e-invoices, and delivery notes.
-
-### Sales Analyst | Chalov Sole Proprietorship | Aug 2026 — Sep 2026
-
 - Analyzed 4,000+ active listings on Kaspi and Umag: seasonality, net revenue, excluding items with no cost basis.
 - Extracted 10,000+ unique order numbers from Kaspi over the prior 3 months for analytics.
 - Maintained sales reporting and managed the online warehouse database.
