@@ -12,7 +12,6 @@ export function Nav() {
     ['#about', t.nav.about],
     ['#experience', t.nav.experience],
     ['#education', t.nav.education],
-    ['#certificates', t.nav.certificates],
     ['#skills', t.nav.skills],
     ['#projects', t.nav.projects],
     ['#contact', t.nav.contact],
@@ -21,10 +20,13 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--bg)]">
       <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        <a href="#top" className="text-sm font-bold tracking-tight text-[var(--text-h)]">
+        <a
+          href="#top"
+          className="max-w-[160px] truncate text-sm font-bold tracking-tight text-[var(--text-h)] md:max-w-[220px]"
+        >
           {t.hero.name}
         </a>
-        <ul className="hidden gap-4 text-sm text-[var(--text)] lg:flex">
+        <ul className="hidden gap-4 whitespace-nowrap text-sm text-[var(--text)] lg:flex">
           {links.map(([href, label]) => (
             <li key={href}>
               <a href={href} className="transition-colors hover:text-[var(--text-h)]">
