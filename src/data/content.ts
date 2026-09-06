@@ -133,9 +133,12 @@ function buildContent(locale: Locale): Content {
       viewOriginal: u.viewOriginal,
       noImage: u.noImage,
     },
-    skills: { title: site.skillsTitle, index: INDEXES[4], groups: site.skillsGroups },
-    projects: { title: site.projectsTitle, index: INDEXES[5], items: site.projectsItems },
-    contact: { title: site.contactTitle, index: INDEXES[6], text: site.contactText },
+    // Certificates (index 04) is parsed but not rendered right now (see
+    // App.tsx) — the rest are renumbered so the visible sections read
+    // 01-06 without a gap.
+    skills: { title: site.skillsTitle, index: INDEXES[3], groups: site.skillsGroups },
+    projects: { title: site.projectsTitle, index: INDEXES[4], items: site.projectsItems },
+    contact: { title: site.contactTitle, index: INDEXES[5], text: site.contactText },
     footer: { text: u.copyright(site.heroName) },
   }
 }

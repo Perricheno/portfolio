@@ -1,5 +1,4 @@
 import { About } from './components/About'
-import { Certificates } from './components/Certificates'
 import { Contact } from './components/Contact'
 import { Education } from './components/Education'
 import { Experience } from './components/Experience'
@@ -19,7 +18,8 @@ function App() {
           <About />
           <Experience />
           <Education />
-          <Certificates />
+          {/* Certificates section hidden for now (only one entry so far) —
+              component + content are still there, just not rendered. */}
           <Skills />
           <Projects />
           <Contact />
