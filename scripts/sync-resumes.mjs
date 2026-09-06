@@ -20,6 +20,10 @@ for (const { dir, outBase, locale } of sources) {
     continue
   }
 
+  // Prefer an actual document (pdf/doc/docx) over anything else that might
+  // land in this folder — e.g. a .tex source kept alongside the compiled
+  // PDF. Falls back to "newest file" only if nothing document-shaped exists.
+  const DOC_EXTENSIONS = new Set(['.pdf', '.doc', '.docx'])
   const candidates = readdirSync(dir)
     .filter((name) => !name.startsWith('.') && statSync(join(dir, name)).isFile())
     .map((name) => ({ name, mtime: statSync(join(dir, name)).mtimeMs }))
@@ -30,7 +34,8 @@ for (const { dir, outBase, locale } of sources) {
     continue
   }
 
-  const { name } = candidates[0]
+  const preferred = candidates.find((c) => DOC_EXTENSIONS.has(extname(c.name).toLowerCase()))
+  const { name } = preferred ?? candidates[0]
   const ext = extname(name) || '.pdf'
   const outName = `${outBase}${ext}`
   copyFileSync(join(dir, name), join(publicDir, outName))

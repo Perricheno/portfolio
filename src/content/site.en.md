@@ -109,12 +109,12 @@ Co-authored with Dr. Kamal Imran Mohd Sharif
 
 Co-author: Yedil Talasbekov (ML Engineer) · AI for Finance Decisions course (AIB 2402)
 
-- **Generative AI experiment:** a 4-week iterative stock-forecasting cycle (GOOGL, ORCL, NET) using Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash, grounded in 10-K filings with live web search; average MAE cut by 93%, reaching $0.35 accuracy for Cloudflare and $0.00 for Alphabet.
-- **Ensemble trading-bot model:** architecture built on XGBoost, Random Forest, and Logistic Regression — 36 pre-trained models covering every forecast horizon, R² consistently above 0.98 on short-term forecasts.
+- **Generative AI experiment:** a 10-week iterative stock-forecasting cycle (GOOGL, ORCL, NET) using Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash, grounded in 10-K filings with live web search; average MAE cut by 93%, reaching $3.5 for Cloudflare and $2.7 for Alphabet.
+- **Ensemble forecasting model:** architecture built on XGBoost, Random Forest, and Logistic Regression — 36 pre-trained models covering every forecast horizon, R² consistently above 0.98 on short-term forecasts.
 - **Feature engineering:** an 8-dimensional feature vector (RSI, MACD, Bollinger Bands, 5/20-day SMAs) to improve signal quality.
-- **MLOps & deployment:** a production Telegram bot in Python (python-telegram-bot), full CI/CD on Render.com and GitHub, an asynchronous interface, live data via yfinance, and dynamic matplotlib charts.
+- **MLOps & deployment:** full CI/CD on Render.com and GitHub, an asynchronous live-data pipeline via yfinance, and automated chart generation with matplotlib.
 
-Tags: Python, XGBoost, Gemini API, Telegram Bot, MLOps
+Tags: Python, XGBoost, Gemini API, MLOps, Forecasting
 
 ## Get in touch
 

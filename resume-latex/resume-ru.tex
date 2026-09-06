@@ -1,0 +1,184 @@
+%-------------------------
+% Resume in Latex
+% Based on the Jake Gutierrez template: https://github.com/jakegut/resume
+% Filled in with Amangeldy Shyngyskhan's data — RU version
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Амангелды Шынгысхан} \\ \vspace{1pt}
+    \small [Телефон] $|$ \href{mailto:email@example.com}{\underline{email@example.com}} $|$
+    \href{https://linkedin.com/in/username}{\underline{linkedin.com/in/username}} $|$
+    \href{https://github.com/username}{\underline{github.com/username}} $|$
+    \href{https://t.me/username}{\underline{t.me/username}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Образование}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Astana IT University}{Астана, Казахстан}
+      {Бакалавр, 3-й (последний) курс}{2024 -- 2027 (ожидается)}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Опыт работы}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {АО <<Казахстан Темир Жолы>>}{Астана, Казахстан}
+      {DevOps and ML Engineer (стажировка)}{Янв. 2026 -- Июнь 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Сервис оптимизации логистики:} в составе команды разработал систему для снижения 8--12-часового простоя локомотивов на сети из 1000+ станций для крупного акционерного общества (участника процесса IPO). Реализовал ML-модель для автоподбора оптимальных кандидатов к 90 локомотивам.}
+        \resumeItem{\textbf{Геоданные \& Симуляция:} внедрил интерактивные карты на базе OpenStreetMap (OSM) и OpenRailwayMap. Спроектировал среду <<песочниц>> (sandbox) для симуляции и тестирования графиков движения и ситуаций ЧС.}
+        \resumeItem{Проект не получил окончательного одобрения руководства; потенциал сокращения расходов оценивается в 40--50 тыс.\ тг/час (до 500 тыс.\ тг на локомотив).}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Розничный бизнес на Kaspi.kz}{Казахстан}
+      {Главный технический специалист и аналитик продаж}{Июнь 2026 -- Сент. 2026}
+      \resumeItemListStart
+        \resumeItem{Настройка и обслуживание парка оборудования: моноблоки, роутеры, IP-камеры, ноутбуки, принтеры.}
+        \resumeItem{Разработал внутренний сервис для сотрудников: автонакладные Kaspi, быстрая печать собственных этикеток и штрихкодов, уведомления о заказах Kaspi.}
+        \resumeItem{Автоматизировал выгрузку каталога в YML для 2ГИС Услуги (4000+ товаров) — парсинг Kaspi через сессионные cookies, с уникальными ссылками на покупку и фотографиями.}
+        \resumeItem{Поиск товаров по фото (база 14~000+ изображений, дообучение поверх готовой модели OpenAI) — сервисом ежедневно пользуются 25+ сотрудников.}
+        \resumeItem{Автоматический сбор и анализ остатков склада Umag (12~360 SKU, 270~219 ед.) с выгрузкой метрик по нулевой себестоимости, отрицательным остаткам и заканчивающимся товарам отдельными отчётами.}
+        \resumeItem{Автоматизация печати накладных Kaspi под термопринтеры; для бухгалтерии — автосоставление коммерческих предложений, ЭСФ и накладных.}
+        \resumeItem{Анализ 4000+ активных товаров на Kaspi и Umag: сезонность, чистая выручка, исключение позиций без себестоимости.}
+        \resumeItem{Извлечение 10~000+ уникальных номеров заказов Kaspi за последние 3 месяца для аналитики.}
+        \resumeItem{Ведение отчётности по продажам и управление онлайн-базой склада.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {ТОО <<Wipon>>}{Казахстан}
+      {Data Scientist and Machine Learning Engineer (стажировка)}{Сент. 2026 -- 15 Дек. 2026}
+
+    \resumeSubheading
+      {Tirek Systems}{Казахстан}
+      {CTO, сооснователь}{Дек. 2024 -- настоящее время}
+      \resumeItemListStart
+        \resumeItem{Проектировал платформу для ускорения создания академических работ и анализа больших данных — \textbf{\href{https://perricheno.com}{perricheno.com}}. Участник Astana Hub Startups. <<Исследуй, пиши, анализируй, цитируй, визуализируй — всё в одном месте>>.}
+        \resumeItem{\textbf{LLM Агенты:} проектировал асинхронную многослойную мультиагентную систему с послойными генерациями в 6 стадий. Встроил внутренний сервис компиляции LaTeX (на базе TeX Live Full), написанный на Go — ускорив процесс компиляции в 4 раза.}
+        \resumeItem{\textbf{Data Analytics \& Компиляторы:} интегрировал изолированный сервис компиляции. Платформа анализирует миллионы строк датасетов; агенты пишут скрипты на R / Python / LaTeX / TikZ для статистического анализа и генерируют точные, редактируемые визуализации более 40+ видов.}
+        \resumeItem{Настройка CI/CD-воркфлоу на GitLab с автоматическим тестированием.}
+        \resumeItem{Инфраструктура на Kubernetes (k3s) и Linux (Ubuntu).}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Проекты и научная деятельность}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Исследование E-commerce логистики} $|$ \emph{R, логистическая регрессия}}{Янв. -- Февр. 2026}
+          \resumeItemListStart
+            \resumeItem{В соавторстве с профессором Dr. Kamal Imran Mohd Sharif (PhD in Technology, Operation and Logistics, Universiti Utara Malaysia) провёл количественное исследование аналитики последней мили.}
+            \resumeItem{Обработал массив из 10~000~000+ транзакций на R с применением бинарной логистической регрессии для оценки компромисса между скоростью и надёжностью доставки.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{AI-First Financial Strategy Synthesis} $|$ \emph{Python, XGBoost, Gemini API}}{Февр. 2026}
+          \resumeItemListStart
+            \resumeItem{Соавтор: Yedil Talasbekov (ML Engineer) · курс AI for Finance Decisions (AIB 2402).}
+            \resumeItem{\textbf{Генеративный AI-эксперимент:} 10-недельный итеративный цикл прогнозирования акций (GOOGL, ORCL, NET) на Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash с фактчекингом по 10-K отчётам и live-поиском; средняя MAE снижена на 93\%, достигнув \$3.5 по Cloudflare и \$2.7 по Alphabet.}
+            \resumeItem{\textbf{Ensemble-модель для прогнозирования:} архитектура на XGBoost, Random Forest и Logistic Regression — 36 предобученных моделей на все горизонты прогноза, R\textsuperscript{2} стабильно выше 0.98 на краткосрочных прогнозах.}
+            \resumeItem{\textbf{Feature engineering:} 8-мерный вектор признаков (RSI, MACD, Bollinger Bands, SMA 5/20) для повышения качества сигнала.}
+            \resumeItem{\textbf{MLOps и деплой:} полный CI/CD на Render.com и GitHub, асинхронная обработка live-данных через yfinance, автоматическая генерация графиков на matplotlib.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Технические навыки}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Языки программирования}{: Python, R} \\
+     \textbf{Базы данных \& Аналитика}{: PostgreSQL, Pandas, Matplotlib, Seaborn, Power BI, Tableau} \\
+     \textbf{Backend \& Архитектура}{: Микросервисы, Multi-Agent Systems, LLM, XGBoost} \\
+     \textbf{DevOps \& Cloud}{: Linux (Ubuntu/Debian), Google Cloud Platform, Kubernetes (k3s), Docker, CI/CD (GitHub Actions, GitLab CI), Cloudflare} \\
+     \textbf{Инструменты \& Геоданные}{: Git / GitHub / GitLab, OpenStreetMap (OSM), LaTeX, TikZ, Figma} \\
+     \textbf{Языки}{: Русский (C1), Казахский (родной), Английский (B2 — технический)}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}

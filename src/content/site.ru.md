@@ -109,12 +109,12 @@ DevOps & System Analyst
 
 Соавтор: Yedil Talasbekov (ML Engineer) · курс AI for Finance Decisions (AIB 2402)
 
-- **Генеративный AI-эксперимент:** 4-недельный итеративный цикл прогнозирования акций (GOOGL, ORCL, NET) на Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash с фактчекингом по 10-K отчётам и live-поиском; средняя MAE снижена на 93%, точность до $0.35 по Cloudflare и $0.00 по Alphabet.
-- **Ensemble-модель для трейдинг-бота:** архитектура на XGBoost, Random Forest и Logistic Regression — 36 предобученных моделей на все горизонты прогноза, R² стабильно выше 0.98 на краткосрочных прогнозах.
+- **Генеративный AI-эксперимент:** 10-недельный итеративный цикл прогнозирования акций (GOOGL, ORCL, NET) на Gemini 3.0 Pro / 2.5 Pro / 2.0 Flash с фактчекингом по 10-K отчётам и live-поиском; средняя MAE снижена на 93%, достигнув $3.5 по Cloudflare и $2.7 по Alphabet.
+- **Ensemble-модель для прогнозирования:** архитектура на XGBoost, Random Forest и Logistic Regression — 36 предобученных моделей на все горизонты прогноза, R² стабильно выше 0.98 на краткосрочных прогнозах.
 - **Feature engineering:** 8-мерный вектор признаков (RSI, MACD, Bollinger Bands, SMA 5/20) для повышения качества сигнала.
-- **MLOps и деплой:** production Telegram-бот на Python (python-telegram-bot), полный CI/CD на Render.com и GitHub, асинхронный интерфейс, live-данные через yfinance, динамические графики на matplotlib.
+- **MLOps и деплой:** полный CI/CD на Render.com и GitHub, асинхронная обработка live-данных через yfinance, автоматическая генерация графиков на matplotlib.
 
-Tags: Python, XGBoost, Gemini API, Telegram Bot, MLOps
+Tags: Python, XGBoost, Gemini API, MLOps, Forecasting
 
 ## Связаться
 
